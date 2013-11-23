@@ -22,12 +22,48 @@ NewsappGenerator.prototype.askFor = function askFor() {
   // have Yeoman greet the user.
   console.log(this.yeoman);
 
+  // welcome message
+  if (!this.options['skip-welcome-message']) {
+    console.log(this.yeoman);
+    console.log('Out of the box I include HTML5 Boilerplate and jQuery.');
+  }
+
+
   var prompts = [{
-    type: 'confirm',
-    name: 'someOption',
-    message: 'Would you like to enable this option?',
-    default: true
-  }];
+      type: 'checkbox',
+      name: 'features',
+      message: 'What JavaScript libraries would you like?'
+      choices: [{
+        name: 'Leaflet.js',
+        value: 'hasLeaflet',
+        checked: true
+      }, {
+        name: 'D3.js',
+        value: 'hasD3',
+        checked: true
+      }, {
+        name: 'Moment.js',
+        value: 'hasMoment',
+        checked: true
+      }, {
+        name: 'Modernizr',
+        value: 'hasModernizr',
+        checked: true
+      }]
+    }, { // CSS Framework
+      type: 'checkbox',
+      name: 'features',
+      message: 'What CSS framework would you like?',
+      choices: [{
+          name: 'Bootstrap 3 for Sass',
+          value: 'compassBootstrap',
+          checked: true
+        },
+        {
+          name: 'Zurb Foundation 5',
+          value: 'zurbFoundation',
+        }]
+    }];
 
   this.prompt(prompts, function (props) {
     this.someOption = props.someOption;
