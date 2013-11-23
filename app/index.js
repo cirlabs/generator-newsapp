@@ -19,9 +19,6 @@ util.inherits(NewsappGenerator, yeoman.generators.Base);
 NewsappGenerator.prototype.askFor = function askFor() {
   var cb = this.async();
 
-  // have Yeoman greet the user.
-  console.log(this.yeoman);
-
   // welcome message
   if (!this.options['skip-welcome-message']) {
     console.log(this.yeoman);
