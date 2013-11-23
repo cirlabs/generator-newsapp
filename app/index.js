@@ -29,7 +29,8 @@ NewsappGenerator.prototype.askFor = function askFor() {
   }
 
 
-  var prompts = [{
+  var prompts = [
+    {
       type: 'checkbox',
       name: 'features',
       message: 'What JavaScript libraries would you like?'
@@ -63,14 +64,30 @@ NewsappGenerator.prototype.askFor = function askFor() {
           name: 'Zurb Foundation 5',
           value: 'zurbFoundation',
         }]
-    }];
+      }
+    ];
 
-  this.prompt(prompts, function (props) {
-    this.someOption = props.someOption;
+  this.prompt(prompts, function (answers) {
+    var features = answers.features;
+
+    function hasFeature(feat) { return features.indexOf(feat) !== -1; }
+
+    // manually deal with the response, get back and store the results.
+    // we change a bit this way of doing to automatically do this in the self.prompt() method.
+    this.hasLeaflet = hasFeature('hasLeaflet');
+    this.hasD3 = hasFeature('hasD3');
+    this.hasMoment = hasFeature('hasMoment');
+    this.includeModernizr = hasFeature('includeModernizr');
+
+    this.compassBootstrap = hasFeature('compassBootstrap');
 
     cb();
   }.bind(this));
 };
+
+NewsappGenerator.prototype.gruntfile = function gruntfile() {
+  this.template('Gruntfile.js')
+}
 
 NewsappGenerator.prototype.app = function app() {
   this.mkdir('app');
