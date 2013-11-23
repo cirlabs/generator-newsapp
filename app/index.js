@@ -33,7 +33,7 @@ NewsappGenerator.prototype.askFor = function askFor() {
     {
       type: 'checkbox',
       name: 'features',
-      message: 'What JavaScript libraries would you like?'
+      message: 'What JavaScript libraries would you like?',
       choices: [{
         name: 'Leaflet.js',
         value: 'hasLeaflet',
@@ -85,16 +85,14 @@ NewsappGenerator.prototype.askFor = function askFor() {
   }.bind(this));
 };
 
-NewsappGenerator.prototype.gruntfile = function gruntfile() {
-  this.template('Gruntfile.js')
-}
-
 NewsappGenerator.prototype.app = function app() {
   this.mkdir('app');
   this.mkdir('app/templates');
 
   this.copy('_package.json', 'package.json');
   this.copy('_bower.json', 'bower.json');
+
+  this.template('Gruntfile.js', 'Gruntfile.js')  
 };
 
 NewsappGenerator.prototype.projectfiles = function projectfiles() {
