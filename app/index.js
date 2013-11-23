@@ -2,6 +2,7 @@
 var util = require('util');
 var path = require('path');
 var yeoman = require('yeoman-generator');
+var newsapp = require('../lib/newsapp');
 
 
 var NewsappGenerator = module.exports = function NewsappGenerator(args, options, config) {
@@ -21,7 +22,7 @@ NewsappGenerator.prototype.askFor = function askFor() {
 
   // welcome message
   if (!this.options['skip-welcome-message']) {
-    console.log(this.yeoman);
+    newsapp.banner();
     console.log('Out of the box I include HTML5 Boilerplate and jQuery.');
   }
 
