@@ -2,12 +2,15 @@
   "name": "package",
   "version": "0.0.0",
   "dependencies": {
-    <% if (hasLeaflet) { %>"leaflet": "~0.7.0",<% } %>
+    <% if (hasLeaflet) { %>"leaflet": "~0.6.4",<% } %>
     <% if (hasMoment) { %>"moment": "~2.4.0",<% } %>
     <% if (hasD3) { %>"d3": "~3.3.10",<% } %>
     <% if (includeModernizr) { %>"modernizr": "~2.7.0",<% } %>
     <% if (compassBootstrap) { %>"sass-bootstrap": "~3.0.0",<% } %>
     <% if (zurbFoundation) { %>"foundation": "~5.0.0",<% } %>
+    <% if (hasBackbone) { %>"backbone": "~1.0.0",<% } %>
+    <% if (hasAngular) { %>"angular": "~1.2.2",<% } %>
+    <% if (hasEmber) { %>"ember": "~1.2.0",<% } %>
     "jquery": "~1.10.2"
   }
 }

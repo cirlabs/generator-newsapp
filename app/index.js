@@ -48,7 +48,7 @@ NewsappGenerator.prototype.askFor = function askFor() {
     },
     { // CSS Framework
       type: 'list',
-      name: 'cssframework',
+      name: 'cssFramework',
       message: 'Which CSS framework would you like?',
       choices: [{
           name: 'Bootstrap 3 for Sass',
@@ -62,7 +62,7 @@ NewsappGenerator.prototype.askFor = function askFor() {
     },
     { // MVC JS
       type: 'list',
-      name: 'mvcjs',
+      name: 'mvcJS',
       message: 'Which MVC JavaScript Framework would you like?',
       choices: [{
         name: 'Backbone.js',
@@ -78,18 +78,25 @@ NewsappGenerator.prototype.askFor = function askFor() {
   ];
 
   this.prompt(prompts, function (props) {
-    var features = props.features;
+    var features = props.features,
+        cssFramework = props.cssFramework,
+        mvcJS = props.mvcJS;
 
-    function hasFeature(feat) { return features.indexOf(feat) !== -1; }
+    function hasFeature(feat, propName) { return propName.indexOf(feat) !== -1; }
 
     // manually deal with the response, get back and store the results.
     // we change a bit this way of doing to automatically do this in the self.prompt() method.
-    this.hasLeaflet = hasFeature('hasLeaflet');
-    this.hasD3 = hasFeature('hasD3');
-    this.hasMoment = hasFeature('hasMoment');
-    this.includeModernizr = hasFeature('includeModernizr');
-    this.compassBootstrap = hasFeature('compassBootstrap');
-    this.zurbFoundation = hasFeature('zurbFoundation');
+    this.hasLeaflet = hasFeature('hasLeaflet', features);
+    this.hasD3 = hasFeature('hasD3', features);
+    this.hasMoment = hasFeature('hasMoment', features);
+    this.includeModernizr = hasFeature('includeModernizr', features);
+
+    this.compassBootstrap = hasFeature('compassBootstrap', cssFramework);
+    this.zurbFoundation = hasFeature('zurbFoundation', cssFramework);
+
+    this.hasBackbone = hasFeature('hasBackbone', mvcJS);
+    this.hasAngular = hasFeature('hasAngular', mvcJS);
+    this.hasEmber = hasFeature('hasEmber', mvcJS);
 
     cb();
   }.bind(this));
