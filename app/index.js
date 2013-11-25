@@ -23,11 +23,23 @@ NewsappGenerator.prototype.askFor = function askFor() {
   // welcome message
   if (!this.options['skip-welcome-message']) {
     newsapp.banner();
-    console.log('Out of the box I include HTML5 Boilerplate and jQuery.');
+    console.log('Out of the box I include Modernizr and jQuery.');
   }
 
 
   var prompts = [
+    {
+      type: 'list',
+      name: 'appType',
+      message: 'Hey! Before we get started, are you building a standalone web app or a Django Template?',
+      choices: [{
+        name: 'Web App',
+        value: 'webapp'
+      }, {
+        name: 'Django Template',
+        value: 'Django'
+      }]
+    },
     {
       type: 'checkbox',
       name: 'features',
@@ -42,8 +54,8 @@ NewsappGenerator.prototype.askFor = function askFor() {
         name: 'Moment.js',
         value: 'hasMoment',
       }, {
-        name: 'Modernizr',
-        value: 'includeModernizr',
+        name: 'jQuery UI',
+        value: 'hasjQueryUI',
       }]
     },
     { // CSS Framework
@@ -78,7 +90,8 @@ NewsappGenerator.prototype.askFor = function askFor() {
   ];
 
   this.prompt(prompts, function (props) {
-    var features = props.features,
+    var appType = props.appType,
+        features = props.features,
         cssFramework = props.cssFramework,
         mvcJS = props.mvcJS;
 
@@ -86,10 +99,13 @@ NewsappGenerator.prototype.askFor = function askFor() {
 
     // manually deal with the response, get back and store the results.
     // we change a bit this way of doing to automatically do this in the self.prompt() method.
+    this.webapp = hasFeature('webapp', appType);
+    this.django = hasFeature('django', appType);
+
     this.hasLeaflet = hasFeature('hasLeaflet', features);
     this.hasD3 = hasFeature('hasD3', features);
     this.hasMoment = hasFeature('hasMoment', features);
-    this.includeModernizr = hasFeature('includeModernizr', features);
+    this.hasjQueryUI = hasFeature('hasjQueryUI', features);
 
     this.compassBootstrap = hasFeature('compassBootstrap', cssFramework);
     this.zurbFoundation = hasFeature('zurbFoundation', cssFramework);
@@ -115,4 +131,5 @@ NewsappGenerator.prototype.app = function app() {
 NewsappGenerator.prototype.projectfiles = function projectfiles() {
   this.copy('editorconfig', '.editorconfig');
   this.copy('jshintrc', '.jshintrc');
+  this.copy('bowerrc', '.bowerrc');
 };
