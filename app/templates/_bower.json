@@ -1,6 +1,11 @@
 {
   "name": "package",
   "version": "0.0.0",
-  "dependencies": {}
+  "dependencies": {
+    <% if (hasLeaflet) { %>"leaflet": "~0.7.0",<% } %>
+    <% if (compassBootstrap) { %>"sass-bootstrap": "~3.0.0",<% } %>
+    <% if (zurbFoundation) { %>"foundation": "~5.0.0",<% } %>
+    "jquery": "~1.10.2"
+  }
 }
 

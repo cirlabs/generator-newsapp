@@ -31,28 +31,24 @@ NewsappGenerator.prototype.askFor = function askFor() {
     {
       type: 'checkbox',
       name: 'features',
-      message: 'What JavaScript libraries would you like?',
+      message: 'Which JavaScript libraries would you like?',
       choices: [{
         name: 'Leaflet.js',
         value: 'hasLeaflet',
-        checked: true
       }, {
         name: 'D3.js',
         value: 'hasD3',
-        checked: true
       }, {
         name: 'Moment.js',
         value: 'hasMoment',
-        checked: true
       }, {
         name: 'Modernizr',
-        value: 'hasModernizr',
-        checked: true
+        value: 'includeModernizr',
       }]
     }, { // CSS Framework
       type: 'checkbox',
       name: 'features',
-      message: 'What CSS framework would you like?',
+      message: 'Which CSS framework would you like?',
       choices: [{
           name: 'Bootstrap 3 for Sass',
           value: 'compassBootstrap',
@@ -65,8 +61,8 @@ NewsappGenerator.prototype.askFor = function askFor() {
       }
     ];
 
-  this.prompt(prompts, function (answers) {
-    var features = answers.features;
+  this.prompt(prompts, function (props) {
+    var features = props.features;
 
     function hasFeature(feat) { return features.indexOf(feat) !== -1; }
 
@@ -76,8 +72,8 @@ NewsappGenerator.prototype.askFor = function askFor() {
     this.hasD3 = hasFeature('hasD3');
     this.hasMoment = hasFeature('hasMoment');
     this.includeModernizr = hasFeature('includeModernizr');
-
     this.compassBootstrap = hasFeature('compassBootstrap');
+    this.zurbFoundation = hasFeature('zurbFoundation');
 
     cb();
   }.bind(this));
@@ -88,7 +84,7 @@ NewsappGenerator.prototype.app = function app() {
   this.mkdir('app/templates');
 
   this.copy('_package.json', 'package.json');
-  this.copy('_bower.json', 'bower.json');
+  this.template('_bower.json', 'bower.json');
 
   this.template('Gruntfile.js', 'Gruntfile.js')  
 };
