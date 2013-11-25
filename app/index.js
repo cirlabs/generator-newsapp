@@ -45,9 +45,10 @@ NewsappGenerator.prototype.askFor = function askFor() {
         name: 'Modernizr',
         value: 'includeModernizr',
       }]
-    }, { // CSS Framework
-      type: 'checkbox',
-      name: 'features',
+    },
+    { // CSS Framework
+      type: 'list',
+      name: 'cssframework',
       message: 'Which CSS framework would you like?',
       choices: [{
           name: 'Bootstrap 3 for Sass',
@@ -58,8 +59,23 @@ NewsappGenerator.prototype.askFor = function askFor() {
           name: 'Zurb Foundation 5',
           value: 'zurbFoundation',
         }]
-      }
-    ];
+    },
+    { // MVC JS
+      type: 'list',
+      name: 'mvcjs',
+      message: 'Which MVC JavaScript Framework would you like?',
+      choices: [{
+        name: 'Backbone.js',
+        value: 'hasBackbone',
+      }, {
+        name: 'Angular.js',
+        value: 'hasAngular'
+      }, {
+        name: 'Ember.js',
+        value: 'hasEmber'
+      }]
+    }
+  ];
 
   this.prompt(prompts, function (props) {
     var features = props.features;
