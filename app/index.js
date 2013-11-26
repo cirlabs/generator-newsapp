@@ -123,7 +123,6 @@ NewsappGenerator.prototype.app = function app() {
 
   if (self.django) {
     self.mkdir('assets');
-    self.mkdir('assets/js');
   } else {
     self.mkdir('app');
     self.mkdir('app/templates');

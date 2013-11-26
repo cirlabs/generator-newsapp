@@ -1,4 +1,4 @@
 {
-  <% if (webapp) { %>"directory": "app/js"<% } %>
-  <% if (django) { %>"directory": "assets/js"<% } %>
+  <% if (webapp) { %>"directory": "app/bower_components"<% } %>
+  <% if (django) { %>"directory": "assets/bower_components"<% } %>
 }
