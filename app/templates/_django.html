@@ -11,21 +11,21 @@
       <title>My Awesome News App</title>
       <% if (django) { %>
         <% if (hasLeaflet) { %>
-          <link rel="stylesheet" href="{% static "leaflet-dist/leaflet.css" %}">
+          <link rel="stylesheet" href="{% static "bower_components/leaflet-dist/leaflet.css" %}">
         <% } %>
         <% if (hasjQueryUI) { %>
           <!-- This is the whole enchilada. Consider using only what you need -->
-          <link rel="stylesheet" href="{% static "jquery-ui/themes/base/minified/jquery.ui.theme.min.css" %}">
+          <link rel="stylesheet" href="{% static "bower_components/jquery-ui/themes/base/minified/jquery.ui.theme.min.css" %}">
         <% } %>
         <% if (compassBootstrap) { %>
-          <link rel="stylesheet" href="{% static "sass-bootstrap/dist/css/bootstrap.min.css" %}">
+          <link rel="stylesheet" href="{% static "bower_components/sass-bootstrap/dist/css/bootstrap.min.css" %}">
         <% } %>
         <% if (zurbFoundation) { %>
-          <link rel="stylesheet" href="{% static "foundation/css/normalize.css" %}">
-          <link rel="stylesheet" href="{% static "foundation/css/foundation.min.css" %}">
+          <link rel="stylesheet" href="{% static "bower_components/foundation/css/normalize.css" %}">
+          <link rel="stylesheet" href="{% static "bower_components/foundation/css/foundation.min.css" %}">
         <% } %>
       <% } %>
-      <script src="{% static "modernizr/modernizr.js" %}"></script>
+      <script src="{% static "bower_components/modernizr/modernizr.js" %}"></script>
   </head>
   <body>
 
@@ -36,29 +36,29 @@
 
     <!-- JavaScript -->
     <% if (django) { %>
-      <script src="{% static "jquery/jquery.min.js" %}"></script>
+      <script src="{% static "bower_components/jquery/jquery.js" %}"></script>
       <!-- Other Includes -->
       <% if (hasLeaflet) { %>
-        <script src="{% static "leaflet-dist/leaflet.js" %}"></script>
+        <script src="{% static "bower_components/leaflet-dist/leaflet.js" %}"></script>
       <% } %>
       <% if (hasMoment) { %>
-        <script src="{% static "moment/min/moment.min.js" %}"></script>
+        <script src="{% static "bower_components/moment/min/moment.min.js" %}"></script>
       <% } %>
       <% if (hasD3) { %>
-        <script src="{% static "d3/d3.min.js" %}"></script>
+        <script src="{% static "bower_components/d3/d3.min.js" %}"></script>
       <% } %>
       <% if (hasjQueryUI) { %>
         <!-- This is the whole enchilada. Consider using only what you need -->
-        <script src="{% static "jquery-ui/ui/minified/jquery-ui.min.js" %}"></script>
+        <script src="{% static "bower_components/jquery-ui/ui/minified/jquery-ui.min.js" %}"></script>
       <% } %>
       <!-- CSS Framework JS -->
       <% if (compassBootstrap) { %>
         <!-- This is the whole enchilada. Consider using only what you need -->
-        <script src="{% static "sass-bootstrap/dist/js/bootstrap.min.js" %}"></script>
+        <script src="{% static "bower_components/sass-bootstrap/dist/js/bootstrap.min.js" %}"></script>
       <% } %>
       <% if (zurbFoundation) { %>
         <!-- This is the whole enchilada. Consider using only what you need -->
-        <script src="{% static "foundation/js/foundation.min.js" %}"></script>
+        <script src="{% static "bower_components/foundation/js/foundation.min.js" %}"></script>
       <% } %>
       <!--  -->
     <% } %>
