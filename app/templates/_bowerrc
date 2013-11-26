@@ -1,3 +1,4 @@
 {
-  "directory": "bananas"
+  <% if (webapp) { %>"directory": "app/js"<% } %>
+  <% if (django) { %>"directory": "assets/js"<% } %>
 }

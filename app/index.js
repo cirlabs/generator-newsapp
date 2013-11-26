@@ -37,7 +37,7 @@ NewsappGenerator.prototype.askFor = function askFor() {
         value: 'webapp'
       }, {
         name: 'Django Template',
-        value: 'Django'
+        value: 'django'
       }]
     },
     {
@@ -119,8 +119,15 @@ NewsappGenerator.prototype.askFor = function askFor() {
 };
 
 NewsappGenerator.prototype.app = function app() {
-  this.mkdir('app');
-  this.mkdir('app/templates');
+  var self = this;
+
+  if (self.django) {
+    self.mkdir('assets');
+    self.mkdir('assets/js');
+  } else {
+    self.mkdir('app');
+    self.mkdir('app/templates');
+  }
 
   this.copy('_package.json', 'package.json');
   this.template('_bower.json', 'bower.json');
