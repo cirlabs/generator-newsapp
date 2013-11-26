@@ -2,7 +2,7 @@
   "name": "package",
   "version": "0.0.0",
   "dependencies": {
-    <% if (hasLeaflet) { %>"leaflet": "~0.6.4",<% } %>
+    <% if (hasLeaflet) { %>"leaflet-dist": "~0.7.0",<% } %>
     <% if (hasMoment) { %>"moment": "~2.4.0",<% } %>
     <% if (hasD3) { %>"d3": "~3.3.10",<% } %>
     <% if (hasjQueryUI) { %>"jquery-ui": "~1.10.3",<% } %>

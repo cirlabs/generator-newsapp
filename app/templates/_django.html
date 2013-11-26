@@ -1,0 +1,66 @@
+<% if (django) { %>
+  {% load staticfiles %}
+<% } %>
+<!DOCTYPE html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" >
+  <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>My Awesome News App</title>
+      <% if (django) { %>
+        <% if (hasLeaflet) { %>
+          <link rel="stylesheet" href="{% static "leaflet-dist/leaflet.css" %}">
+        <% } %>
+        <% if (hasjQueryUI) { %>
+          <!-- This is the whole enchilada. Consider using only what you need -->
+          <link rel="stylesheet" href="{% static "jquery-ui/themes/base/minified/jquery.ui.theme.min.css" %}">
+        <% } %>
+        <% if (compassBootstrap) { %>
+          <link rel="stylesheet" href="{% static "sass-bootstrap/dist/css/bootstrap.min.css" %}">
+        <% } %>
+        <% if (zurbFoundation) { %>
+          <link rel="stylesheet" href="{% static "foundation/css/normalize.css" %}">
+          <link rel="stylesheet" href="{% static "foundation/css/foundation.min.css" %}">
+        <% } %>
+      <% } %>
+      <script src="{% static "modernizr/modernizr.js" %}"></script>
+  </head>
+  <body>
+
+    <div class="container">
+      <h1>Mazel tov!</h1>
+      <p>Go forth and build</p>
+    </div>
+
+    <!-- JavaScript -->
+    <% if (django) { %>
+      <script src="{% static "jquery/jquery.min.js" %}"></script>
+      <!-- Other Includes -->
+      <% if (hasLeaflet) { %>
+        <script src="{% static "leaflet-dist/leaflet.js" %}"></script>
+      <% } %>
+      <% if (hasMoment) { %>
+        <script src="{% static "moment/min/moment.min.js" %}"></script>
+      <% } %>
+      <% if (hasD3) { %>
+        <script src="{% static "d3/d3.min.js" %}"></script>
+      <% } %>
+      <% if (hasjQueryUI) { %>
+        <!-- This is the whole enchilada. Consider using only what you need -->
+        <script src="{% static "jquery-ui/ui/minified/jquery-ui.min.js" %}"></script>
+      <% } %>
+      <!-- CSS Framework JS -->
+      <% if (compassBootstrap) { %>
+        <!-- This is the whole enchilada. Consider using only what you need -->
+        <script src="{% static "sass-bootstrap/dist/js/bootstrap.min.js" %}"></script>
+      <% } %>
+      <% if (zurbFoundation) { %>
+        <!-- This is the whole enchilada. Consider using only what you need -->
+        <script src="{% static "foundation/js/foundation.min.js" %}"></script>
+      <% } %>
+      <!--  -->
+    <% } %>
+  </body>
+</html>
