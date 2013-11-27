@@ -124,6 +124,9 @@ NewsappGenerator.prototype.app = function app() {
   if (self.django) {
     self.mkdir('assets');
     self.template('_django.html', 'templates/index.html');
+    self.copy('cir-header.html', 'templates/_header.html');
+    self.copy('main.js', 'assets/scripts/main.js');
+    self.copy('main.css', 'assets/styles/main.css');
   } else {
     self.mkdir('app');
     self.mkdir('app/templates');

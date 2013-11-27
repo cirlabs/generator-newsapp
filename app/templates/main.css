@@ -1,0 +1,205 @@
+.site-header {
+    position: relative;
+}
+
+.site-header .cir-logo {
+    margin: 0.36364em 1.13636em 0 0.90909em;
+    float: left;
+    width: 9.90909em;
+    height: 3.27273em;
+}
+
+.site-header nav {
+    background: #000 url(http://article.cironline.org/images/header-bg-bottom.png) 6px bottom repeat-x;
+    margin-left: 12.63636em;
+    margin-bottom: 0.68182em;
+    height: 3.68182em;
+    position: relative;
+    overflow: hidden;
+    padding-left: 0.68182em;
+}
+
+.site-header nav:before {
+    background-image: url(http://article.cironline.org/images/header-bg-left.png);
+    background-repeat: no-repeat;
+    display: block;
+    width: 1.18182em;
+    height: 3.59091em;
+    content: "";
+    float: left;
+    margin-left: -0.68182em;
+}
+
+@media screen and (max-width: 1160px) {
+    .site-header nav {
+        padding-right: 3.40909em;
+     }
+}
+
+.site-header nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: inline;
+}
+
+.site-header nav ul li {
+    display: inline-block;
+    line-height: 4.5em;
+    font-size: 0.77273em;
+    margin: 0 0.45455em;
+}
+
+.site-header nav ul li.divider:after {
+    content: "";
+    border-right: 1px solid rgba(255, 255, 255, 0.4);
+    width: 1px;
+    margin-left: 1.13636em;
+    padding: 0.68182em 0;
+}
+
+.site-header nav .secondary {
+    float: right;
+    margin-top: 0.31818em;
+}
+
+.site-header nav .secondary li {
+    line-height: 1.90909em;
+    vertical-align: middle;
+}
+
+.site-header nav .secondary li a {
+    display: block;
+}
+.site-header nav .secondary li.login {
+    font-size: 0.63636em;
+    margin-top: 0.36364em;
+    border-right: 1px solid rgba(255, 255, 255, 0.4);
+    padding-right: 1.13636em;
+    margin-right: 0;
+}
+.site-header nav .secondary li.social {
+    line-height: 0;
+}
+.site-header nav .secondary li.social a {
+    margin-bottom: -0.27273em;
+}
+.site-header nav .secondary li.social a:hover {
+    text-decoration: none;
+}
+.site-header nav a {
+    color: #fff;
+}
+.site-header nav a.donate {
+    color: #f38c21;
+}
+.site-header nav a:hover {
+    text-decoration: underline;
+}
+.site-header nav [class*="icon-"] {
+    font-size: 2em;
+}
+.site-header nav .icon-search {
+    vertical-align: middle;
+    display: inline-block;
+}
+.site-header .mobile {
+    display: none;
+}
+.site-header .mobile a {
+    color: #fff;
+}
+.site-header .mobile .icon-menu {
+    font-size: 2.81818em;
+    line-height: .6em;
+    position: absolute;
+    top: 0.31818em;
+    right: 0.27273em;
+}
+.site-header .mobile ul {
+    display: none;
+    background-color: #000;
+    z-index: 2;
+    list-style: none;
+    width: 100%;
+    margin: 0;
+}
+.site-header .mobile ul.active {
+    display: block;
+}
+.site-header .mobile ul li {
+    font-size: 0.77273em;
+    padding: 0.45455em 1.13636em;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    display: none;
+    white-space: nowrap;
+}
+
+@media screen and (max-width: 1160px) {
+    .site-header .mobile {
+        display: block;
+    }
+    .site-header .mobile .sign-in, .site-header .mobile .register, .site-header .mobile .facebook, .site-header .mobile .twitter {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 1104px) {
+    .site-header .mobile .search {
+        display: block;
+    }
+    .site-header .mobile .search .icon-search {
+        font-size: 1.81818em;
+        vertical-align: middle;
+    }
+}
+
+@media screen and (max-width: 999px) {
+    .site-header .mobile .donate {
+       display: block;
+     }
+}
+
+@media screen and (max-width: 906px) {
+    .site-header .mobile .get-involved {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 792px) {
+    .site-header .mobile .about-us {
+        display: block;
+    }
+}
+
+
+@media screen and (max-width: 705px) {
+    .site-header .mobile .investigations, .site-header .mobile .topics, .site-header .mobile .video, .site-header .mobile .data {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 705px) {
+    .site-header nav {
+       display: none;
+    }
+    .site-header .mobile a .icon-menu {
+        color: #000;
+        font-size: 3.72727em;
+        line-height: .4em;
+        top: 0.36364em;
+        right: 0.04545em;
+    }
+    .site-header .cir-logo {
+        width: 100%;
+        height: 100%;
+        max-width: 9.90909em;
+        max-height: 3.27273em;
+        display: inline-block;
+        margin-left: 0.45455em;
+    }
+    .site-header .mobile {
+        padding-top: 4.09091em;
+        border-bottom: 1px solid #000;
+    }
+}
