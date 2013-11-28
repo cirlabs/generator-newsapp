@@ -12,13 +12,36 @@
       <% if (compassBootstrap) { %><link rel="stylesheet" href="{% static "bower_components/sass-bootstrap/dist/css/bootstrap.min.css" %}"><% } %>
       <% if (zurbFoundation) { %><link rel="stylesheet" href="{% static "bower_components/foundation/css/normalize.css" %}">
       <link rel="stylesheet" href="{% static "bower_components/foundation/css/foundation.min.css" %}"><% } %>
+      <link rel="stylesheet" href="{% static "styles/main.css" %}">
     <script src="{% static "bower_components/modernizr/modernizr.js" %}"></script>
   </head>
   <body>
     {% include '_header.html' %}
     <div class="container">
-      <h1>Mazel tov!</h1>
-      <p>Go forth and build</p>
+      <div class="row">
+        <div class="<% if (zurbFoundation) { %>large-8 large-offset-2 columns<% } %><% if (compassBootstrap) { %>col-lg-8 col-lg-offset-2<% } %>">
+          <div class="banner">
+            <h1>Boom!</h1>
+            <p>Welcome to your news app. It features:</p>
+          </div>
+          <ul>
+            <% if (compassBootstrap) { %><li>Bootstrap CSS Framework and JS</li><% } %>
+            <% if (zurbFoundation) { %><li>Zurb Foundation CSS Framework and JS</li><% } %>
+            <li>jQuery <span id="jquery-version"></span></li>
+            <li>Modernizr</li>
+            <% if (hasLeaflet) { %><li>Leaflet.js</li><% } %>
+            <% if (hasMoment) { %><li>Moment.js</li><% } %>
+            <% if (hasD3) { %><li>D3.js</li><% } %>
+            <% if (hasjQueryUI) { %><li>jQuery UI</li><% } %>
+            <% if (hasEmber) { %><li>Ember.js (and Handlebars.js)</li><% } %>
+            <% if (hasBackbone) { %><li>Backbone.js (and Underscore.js)</li><% } %>
+            <% if (hasAngular) { %><li>Angular.js</li><% } %>
+            <li> ... and is setup to work with Django!</li>
+          </ul>
+
+          <p class="message">Go forth and save journalism!</p>
+        </div>
+      </div>
     </div>
     <!-- JavaScript -->
     <script src="{% static "bower_components/jquery/jquery.js" %}"></script>
@@ -27,6 +50,11 @@
     <% if (hasMoment) { %><script src="{% static "bower_components/moment/min/moment.min.js" %}"></script><% } %>
     <% if (hasD3) { %><script src="{% static "bower_components/d3/d3.min.js" %}"></script><% } %>
     <% if (hasjQueryUI) { %><script src="{% static "bower_components/jquery-ui/ui/minified/jquery-ui.min.js" %}"></script><% } %>
+    <% if (hasEmber) { %><script src="{% static "bower_components/ember/ember.js" %}"></script>
+    <script src="{% static "bower_components/handlebars/handlebars.js" %}"></script><% } %>
+    <% if (hasBackbone) { %><script src="{% static "bower_components/underscore/underscore.js" %}"></script>
+    <script src="{% static "bower_components/backbone/backbone.js" %}"></script><% } %>
+    <% if (hasAngular) { %><script src="{% static "bower_components/angular/angular.js" %}"></script><% } %>
     <!-- CSS Framework JS -->
     <% if (compassBootstrap) { %><script src="{% static "bower_components/sass-bootstrap/dist/js/bootstrap.min.js" %}"></script><% } %>
     <% if (zurbFoundation) { %><script src="{% static "bower_components/foundation/js/foundation.min.js" %}"></script><% } %>

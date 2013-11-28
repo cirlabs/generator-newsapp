@@ -8,7 +8,8 @@
     <% if (hasjQueryUI) { %>"jquery-ui": "~1.10.3",<% } %>
     <% if (compassBootstrap) { %>"sass-bootstrap": "~3.0.0",<% } %>
     <% if (zurbFoundation) { %>"foundation": "~5.0.0",<% } %>
-    <% if (hasBackbone) { %>"backbone": "~1.0.0",<% } %>
+    <% if (hasBackbone) { %>"backbone": "~1.0.0",
+    "underscore": "~1.5.2",<% } %>
     <% if (hasAngular) { %>"angular": "~1.2.2",<% } %>
     <% if (hasEmber) { %>"ember": "~1.2.0",<% } %>
     "jquery": "~1.10.2",
