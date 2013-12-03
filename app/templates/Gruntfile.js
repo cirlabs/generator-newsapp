@@ -60,8 +60,7 @@ require('load-grunt-tasks')(grunt);
 //   'clean:dist',
 //   'useminPrepare',
 //   'concurrent:dist',
-//   'cssmin',<% if (responsiveImages) { %>
-//   'responsive_images:dev',<% } %>
+//   'cssmin',
 //   'concat',
 //   'uglify',
 //   'copy',
