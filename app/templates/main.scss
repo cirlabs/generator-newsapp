@@ -1,0 +1,199 @@
+.site-header {
+  position: relative;
+  .cir-logo {
+    margin: 0.36364em 1.13636em 0 0.90909em;
+    float: left;
+    width: 9.90909em;
+    height: 3.27273em;
+  }
+  nav {
+    background: black url(http://article.cironline.org/images/header-bg-bottom.png) 6px bottom repeat-x;
+    margin-left: 12.63636em;
+    margin-bottom: 0.68182em;
+    height: 3.68182em;
+    position: relative;
+    overflow: hidden;
+    padding-left: 0.68182em;
+    &:before {
+      background-image: url(http://article.cironline.org/images/header-bg-left.png);
+      background-repeat: no-repeat;
+      display: block;
+      width: 1.18182em;
+      height: 3.59091em;
+      content: "";
+      float: left;
+      margin-left: -0.68182em;
+    }
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: inline;
+      li {
+        display: inline-block;
+        line-height: 4.5em;
+        font-size: 0.77273em;
+        margin: 0 0.45455em;
+        &.divider:after {
+          content: "";
+          border-right: 1px solid rgba(255, 255, 255, 0.4);
+          width: 1px;
+          margin-left: 1.13636em;
+          padding: 0.68182em 0;
+        }
+      }
+    }
+    .secondary {
+      float: right;
+      margin-top: 0.31818em;
+      li {
+        line-height: 1.90909em;
+        vertical-align: middle;
+        a {
+          display: block;
+        }
+        &.login {
+          font-size: 0.63636em;
+          margin-top: 0.36364em;
+          border-right: 1px solid rgba(255, 255, 255, 0.4);
+          padding-right: 1.13636em;
+          margin-right: 0;
+        }
+        &.social {
+          line-height: 0;
+          a {
+            margin-bottom: -0.27273em;
+            &:hover {
+              text-decoration: none;
+            }
+          }
+        }
+      }
+    }
+    a {
+      color: #fff;
+      &.donate {
+        color: #f38c21;
+      }
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    [class*="icon-"] {
+      font-size: 2em;
+    }
+    .icon-search {
+      vertical-align: middle;
+      display: inline-block;
+    }
+  }
+  .mobile {
+    display: none;
+    a {
+      color: #fff;
+    }
+    .icon-menu {
+      font-size: 2.81818em;
+      line-height: .6em;
+      position: absolute;
+      top: 0.31818em;
+      right: 0.27273em;
+    }
+    ul {
+      display: none;
+      background-color: #000;
+      z-index: 2;
+      list-style: none;
+      width: 100%;
+      margin: 0;
+      &.active {
+        display: block;
+      }
+      li {
+        font-size: 0.77273em;
+        padding: 0.45455em 1.13636em;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        display: none;
+        white-space: nowrap;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1160px) {
+  .site-header nav {
+    padding-right: 3.40909em;
+  }
+}
+
+@media screen and (max-width: 1160px) {
+  .site-header .mobile {
+    display: block;
+    .sign-in, .register, .facebook, .twitter {
+      display: block;
+    }
+  }
+}
+
+@media screen and (max-width: 1104px) {
+  .site-header .mobile .search {
+    display: block;
+    .icon-search {
+      font-size: 1.81818em;
+      vertical-align: middle;
+    }
+  }
+}
+
+@media screen and (max-width: 999px) {
+  .site-header .mobile .donate {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 906px) {
+  .site-header .mobile .get-involved {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 792px) {
+  .site-header .mobile .about-us {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 705px) {
+  .site-header .mobile {
+    .investigations, .topics, .video, .data {
+      display: block;
+    }
+  }
+}
+
+@media screen and (max-width: 705px) {
+  .site-header {
+    nav {
+      display: none;
+    }
+    .mobile a .icon-menu {
+      color: #000;
+      font-size: 3.72727em;
+      line-height: .4em;
+      top: 0.36364em;
+      right: 0.04545em;
+    }
+    .cir-logo {
+      width: 100%;
+      height: 100%;
+      max-width: 9.90909em;
+      max-height: 3.27273em;
+      display: inline-block;
+      margin-left: 0.45455em;
+    }
+    .mobile {
+      padding-top: 4.09091em;
+      border-bottom: 1px solid #000;
+    }
+  }
+}
