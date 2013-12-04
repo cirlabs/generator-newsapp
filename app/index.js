@@ -135,6 +135,8 @@ NewsappGenerator.prototype.app = function app() {
 
   this.copy('_package.json', 'package.json');
   this.template('_bower.json', 'bower.json');
+  this.copy('README.md', 'README.md');
+
 
   this.template('Gruntfile.js', 'Gruntfile.js')  
 };
