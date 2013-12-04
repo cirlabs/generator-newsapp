@@ -55,7 +55,10 @@ module.exports = function (grunt) {
     }
   });
 
-  grunt.registerTask('default', ['watch', 'sass']); 
+  grunt.registerTask('default', [
+    'sass', 
+    'watch'
+  ]);
 
 
   // grunt.registerTask('build', [
