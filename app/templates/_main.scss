@@ -20,3 +20,48 @@ body {
   position: relative;
   cursor: default;
 }
+
+.main {
+  margin-top: 50px;
+}
+
+.header {
+  background: rgb(0, 0, 0);
+}
+
+.logo img {
+  width: 6em;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.project-name {
+  display: inline-block;
+  color: white;
+  font-family: 'Lato', sans-serif;
+  text-transform: uppercase;
+  font-style: italic;
+  font-size: 2em;
+  position: relative;
+  top: 0.2em;
+  margin: 0 0 0 0.7em;
+}
+
+.nav {
+  display: inline-block;
+  margin-left: 8em;
+
+  ul li {
+    display: inline-block;
+    margin-right: 2em;
+
+    a {
+      color: rgb(255, 255, 255);
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

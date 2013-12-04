@@ -6,10 +6,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Awesome News App</title>
-    <!-- Typekit -->
+    <title><%= appname %></title>
+    <!-- Typekit and Google Fonts -->
     <script type="text/javascript" src="//use.typekit.net/quu2bck.js"></script>
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+    
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,300italic' rel='stylesheet' type='text/css'>
     <!-- JS lib css -->
     <% if (hasLeaflet) { %><link rel="stylesheet" href="{% static "bower_components/leaflet-dist/leaflet.css" %}"><% } %>
     <% if (hasjQueryUI) { %><link rel="stylesheet" href="{% static "bower_components/jquery-ui/themes/base/minified/jquery.ui.theme.min.css" %}"><% } %>
@@ -20,12 +22,12 @@
   </head>
   <body>
     {% include '_header.html' %}
-    <div class="container">
+    <div class="main container">
       <div class="row">
         <div class="<% if (zurbFoundation) { %>large-8 large-offset-2 columns<% } %><% if (compassBootstrap) { %>col-lg-8 col-lg-offset-2<% } %>">
           <div class="banner">
-            <h1>Boom!</h1>
-            <p>Welcome to your news app. It features:</p>
+            <h1><%= appname %></h1>
+            <p>Boom! Welcome to your news app. It features:</p>
           </div>
           <ul>
             <% if (compassBootstrap) { %><li>Bootstrap CSS Framework and JS</li><% } %>
