@@ -9,12 +9,15 @@ module.exports = function (grunt) {
     dist: 'dist'
   };
 
+  // load all grunt tasks from package.json
+  require('load-grunt-tasks')(grunt);
+
   grunt.initConfig({
     yeoman: yeomanConfig,
     pkg: grunt.file.readJSON('package.json'),
     watch: {
       css: {
-        files: ['assets/styles/{,*/}*.{scss}'],
+        files: ['assets/styles/scss/*.scss'],
         tasks: ['sass'],
         options: {
           livereload: true
@@ -24,7 +27,7 @@ module.exports = function (grunt) {
     sass: { // Task
       dist: { // Target
         files: { // Dictionary of files
-          'assets/styles/main.css': 'assets/styles/main.scss'// 'dest': 'source'
+          'assets/styles/main.css': 'assets/styles/scss/main.scss'// 'dest': 'source'
         }
       }
     },
@@ -51,19 +54,20 @@ module.exports = function (grunt) {
       }
     }
   });
+
+  grunt.registerTask('default', ['watch', 'sass']); 
+
+
+  // grunt.registerTask('build', [
+  //   'clean:dist',
+  //   'useminPrepare',
+  //   'concurrent:dist',
+  //   'cssmin',
+  //   'concat',
+  //   'uglify',
+  //   'copy',
+  //   'rev',
+  //   'usemin'
+  // ]);
+
 }
-
-// load all grunt tasks from package.json
-require('load-grunt-tasks')(grunt);
-
-// grunt.registerTask('build', [
-//   'clean:dist',
-//   'useminPrepare',
-//   'concurrent:dist',
-//   'cssmin',
-//   'concat',
-//   'uglify',
-//   'copy',
-//   'rev',
-//   'usemin'
-// ]);
