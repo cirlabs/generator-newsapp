@@ -7,12 +7,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Awesome News App</title>
-      <% if (hasLeaflet) { %><link rel="stylesheet" href="{% static "bower_components/leaflet-dist/leaflet.css" %}"><% } %>
-      <% if (hasjQueryUI) { %><link rel="stylesheet" href="{% static "bower_components/jquery-ui/themes/base/minified/jquery.ui.theme.min.css" %}"><% } %>
-      <% if (compassBootstrap) { %><link rel="stylesheet" href="{% static "bower_components/sass-bootstrap/dist/css/bootstrap.min.css" %}"><% } %>
-      <% if (zurbFoundation) { %><link rel="stylesheet" href="{% static "bower_components/foundation/css/normalize.css" %}">
-      <link rel="stylesheet" href="{% static "bower_components/foundation/css/foundation.min.css" %}"><% } %>
-      <link rel="stylesheet" href="{% static "styles/main.css" %}">
+    <!-- Typekit -->
+    <script type="text/javascript" src="//use.typekit.net/quu2bck.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+    <!-- JS lib css -->
+    <% if (hasLeaflet) { %><link rel="stylesheet" href="{% static "bower_components/leaflet-dist/leaflet.css" %}"><% } %>
+    <% if (hasjQueryUI) { %><link rel="stylesheet" href="{% static "bower_components/jquery-ui/themes/base/minified/jquery.ui.theme.min.css" %}"><% } %>
+    <!-- App CSS -->
+    <link rel="stylesheet" href="{% static "styles/main.css" %}">
+    <!-- Modernizr -->
     <script src="{% static "bower_components/modernizr/modernizr.js" %}"></script>
   </head>
   <body>

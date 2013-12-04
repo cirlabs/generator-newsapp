@@ -127,7 +127,7 @@ NewsappGenerator.prototype.app = function app() {
     self.copy('cir-header.html', 'templates/_header.html');
     self.copy('main.js', 'assets/scripts/main.js');
     self.mkdir('assets/styles/scss')
-    self.copy('main.scss', 'assets/styles/scss/main.scss');
+    self.template('_main.scss', 'assets/styles/scss/main.scss');
   } else {
     self.mkdir('app');
     self.mkdir('app/templates');
@@ -135,7 +135,7 @@ NewsappGenerator.prototype.app = function app() {
 
   this.copy('_package.json', 'package.json');
   this.template('_bower.json', 'bower.json');
-  this.copy('README.md', 'README.md');
+  this.copy('_README.md', 'README.md');
 
 
   this.template('Gruntfile.js', 'Gruntfile.js')  

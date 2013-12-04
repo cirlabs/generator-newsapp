@@ -1,0 +1,22 @@
+// CSS Framework
+<% if (compassBootstrap) { %>@import '../../bower_components/sass-bootstrap/lib/bootstrap';<% } %>
+<% if (zurbFoundation) { %>@import '../../bower_components/foundation/scss/normalize'; @import '../../bower_components/foundation/scss/foundation';<% } %>
+
+// Typekit classes
+$metaserif: "ff-meta-serif-web-pro", Georgia, serif;
+$proxima-nova: "proxima-nova-condensed", sans-serif;
+
+// App Styles
+body {
+  background: rgb(255, 255, 255);
+  font-size: 16px;
+  color: rgb(34, 34, 34);
+  padding: 0;
+  margin: 0;
+  font-family: $metaserif;
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1;
+  position: relative;
+  cursor: default;
+}
