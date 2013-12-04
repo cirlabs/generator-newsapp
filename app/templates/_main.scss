@@ -23,17 +23,15 @@ body {
 
 .main {
   margin-top: 50px;
+  font-size: 22px;
 }
 
 .header {
-  background: rgb(0, 0, 0);
-}
+  position: relative;
 
-.logo img {
-  width: 6em;
-
-  &:hover {
-    opacity: 0.8;
+  img {
+    float: left;
+    margin: 0.36364em 1.13636em 0 0.90909em;
   }
 }
 
@@ -45,17 +43,38 @@ body {
   font-style: italic;
   font-size: 2em;
   position: relative;
-  top: 0.2em;
+  top: 0.5em;
   margin: 0 0 0 0.7em;
 }
 
 .nav {
-  display: inline-block;
-  margin-left: 8em;
+  background: rgb(0, 0, 0) url(http://article.cironline.org/images/header-bg-bottom.png) 6px bottom repeat-x;
+  position: relative;
+  margin-left: 17.63636em;
+  margin-bottom: 0.68182em;
+  height: 4.68182em;
+  //margin-left: 8em;
+  &:before {
+    background-image: url(http://article.cironline.org/images/header-bg-left.png);
+    background-repeat: no-repeat;
+    display: block;
+    width: 1.18182em;
+    height: 4.59091em;
+    content: "";
+    float: left;
+    margin-left: -0.68182em;
+  }
+
+  ul {
+    display: inline-block;
+    position: relative;
+    top: 0.6em;
+  }
 
   ul li {
     display: inline-block;
     margin-right: 2em;
+    font-size: 17px;
 
     a {
       color: rgb(255, 255, 255);
