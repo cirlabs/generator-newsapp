@@ -9,6 +9,10 @@ $metaserif: "ff-meta-serif-web-pro", Georgia, serif;
 $proxima-nova: "proxima-nova-condensed", sans-serif;
 
 // App Styles
+html {
+  overflow-y: scroll;
+}
+
 body {
   background: rgb(255, 255, 255);
   font-size: 16px;
@@ -71,6 +75,19 @@ body {
     display: inline-block;
     position: relative;
     top: 0.6em;
+  }
+
+  .social {
+    float: right;
+
+    li {
+      display: block;
+    }
+
+    .fa {
+      font-size: 1.3em;
+      margin-bottom: 0.3em;
+    }
   }
 
   ul li {
