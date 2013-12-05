@@ -13,7 +13,8 @@
     <% if (hasAngular) { %>"angular": "~1.2.2",<% } %>
     <% if (hasEmber) { %>"ember": "~1.2.0",<% } %>
     "jquery": "~1.10.2",
-    "modernizr": "~2.7.0"
+    "modernizr": "~2.7.0",
+    "font-awesome": "~4.0.3"
   },
   "resolutions": {
     "jquery": "~1.10.2"

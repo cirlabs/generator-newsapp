@@ -1,6 +1,8 @@
-// CSS Framework
+// CSS Framework and icons
 <% if (compassBootstrap) { %>@import '../../bower_components/sass-bootstrap/lib/bootstrap';<% } %>
 <% if (zurbFoundation) { %>@import '../../bower_components/foundation/scss/normalize'; @import '../../bower_components/foundation/scss/foundation';<% } %>
+$fa-font-path: "../bower_components/font-awesome/fonts";
+@import '../../bower_components/font-awesome/scss/font-awesome';
 
 // Typekit classes
 $metaserif: "ff-meta-serif-web-pro", Georgia, serif;
