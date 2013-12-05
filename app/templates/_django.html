@@ -66,5 +66,11 @@
     <% if (zurbFoundation) { %><script src="{% static "bower_components/foundation/js/foundation.min.js" %}"></script><% } %>
 
     <script src="{% static "scripts/main.js" %}"></script>
+
+    <!-- livereload -->
+    <script>document.write('<script src="http://'
+        + location.host.split(':')[0]
+        + ':35729/livereload.js"></'
+        + 'script>')</script>
   </body>
 </html>

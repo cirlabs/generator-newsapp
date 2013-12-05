@@ -1,8 +1,12 @@
-// CSS Framework and icons
+// CSS Framework
 <% if (compassBootstrap) { %>@import '../../bower_components/sass-bootstrap/lib/bootstrap';<% } %>
 <% if (zurbFoundation) { %>@import '../../bower_components/foundation/scss/normalize'; @import '../../bower_components/foundation/scss/foundation';<% } %>
+// Font Awesome Icons
 $fa-font-path: "../bower_components/font-awesome/fonts";
 @import '../../bower_components/font-awesome/scss/font-awesome';
+
+// Mediaquery presets
+@import '../../bower_components/sass-mediaqueries/media-queries';
 
 // Typekit classes
 $metaserif: "ff-meta-serif-web-pro", Georgia, serif;
@@ -79,7 +83,10 @@ body {
 
   .social {
     float: right;
-
+    @include screen(0px, 890px) {
+      top: -26px;
+    }  
+    
     li {
       display: block;
     }
