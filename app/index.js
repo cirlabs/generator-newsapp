@@ -125,6 +125,7 @@ NewsappGenerator.prototype.app = function app() {
     self.mkdir('assets');
     self.template('_django.html', 'templates/index.html');
     self.template('_header.html', 'templates/_header.html');
+    self.template('_header-slim.html', 'templates/_header-slim.html');
     self.copy('main.js', 'assets/scripts/main.js');
     self.mkdir('assets/styles/scss')
     self.template('_main.scss', 'assets/styles/scss/main.scss');

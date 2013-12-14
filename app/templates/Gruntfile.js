@@ -17,7 +17,10 @@ module.exports = function (grunt) {
     pkg: grunt.file.readJSON('package.json'),
     watch: {
       css: {
-        files: ['assets/styles/scss/*.scss'],
+        files: [
+          'assets/styles/scss/*.scss',
+          'templates/*.html'
+        ],
         tasks: ['sass'],
         options: {
           livereload: true

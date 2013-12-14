@@ -12,7 +12,9 @@ $fa-font-path: "../bower_components/font-awesome/fonts";
 $metaserif: "ff-meta-serif-web-pro", Georgia, serif;
 $proxima-nova: "proxima-nova-condensed", sans-serif;
 
-// App Styles
+// ==================
+// ** DEFAULTS **
+// ==================
 html {
   overflow-y: scroll;
 }
@@ -36,6 +38,12 @@ body {
   font-size: 22px;
 }
 
+// ==================
+// ** HEADERS **
+// ==================
+
+
+// CIR HEADER
 .header {
   position: relative;
 
@@ -109,5 +117,73 @@ body {
       font-size: 1.3em;
       margin-bottom: 0.3em;
     } 
+  }
+}
+
+
+// SLIM HEADER
+.header-slim {
+  background: rgb(0, 0, 0);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  height: 41px;
+
+  .header-container {
+    height: inherit;
+  }
+
+  .logo {
+    display: inline-block;
+    width: 77px;
+    margin-left: 10%;
+    position: relative;
+    top: -3px;
+    @include max-screen(568px) {
+      margin-left: 0;
+    }
+  }
+
+  .headline {
+
+    h1 {
+      color: white;
+      display: inline-block;
+      font-family: $metaserif;
+      font-size: 1.15em;
+      text-transform: uppercase;
+      border-left: 1px solid white;
+      padding-left: 20px;
+      @include max-screen(450px) {
+        padding-left: 7px;
+      }
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .social {
+    list-style-type: none;
+    display: inline-block;
+    float: right;
+    margin-top: 10px;
+    @include max-screen(536px) {
+      display: none;
+    }
+
+    li {
+      margin-right: 10px;
+      display: inline-block;
+      @include max-screen(670px) {
+        margin-right: 6px;
+      }
+    }
+
+    .fa {
+      color: white;
+      font-size: 1.25em;
+      @include max-screen(670px) {
+        font-size: 1em;
+      }
+    }
   }
 }
