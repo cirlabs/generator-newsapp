@@ -150,7 +150,7 @@ body {
       font-family: $metaserif;
       font-size: 1.15em;
       text-transform: uppercase;
-      border-left: 1px solid white;
+      border-left: 1px solid rgba(255, 255, 255, 0.4);
       padding-left: 20px;
       @include max-screen(450px) {
         padding-left: 7px;
