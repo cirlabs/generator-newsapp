@@ -136,13 +136,18 @@ body {
     width: 77px;
     margin-left: 10%;
     position: relative;
-    top: -3px;
+    top: -10px;
     @include max-screen(568px) {
       margin-left: 0;
+    }
+    img {
+      width: 100%;
     }
   }
 
   .headline {
+    position: relative;
+    top: -7px;
 
     h1 {
       color: white;
