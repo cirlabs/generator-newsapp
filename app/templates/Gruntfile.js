@@ -17,11 +17,14 @@ module.exports = function (grunt) {
     pkg: grunt.file.readJSON('package.json'),
     watch: {
       css: {
-        files: [
-          'assets/styles/scss/*.scss',
-          'templates/*.html'
-        ],
+        files: ['assets/styles/scss/*.scss'],
         tasks: ['sass'],
+        options: {
+          livereload: true
+        }
+      },
+      src: {
+        files: ['templates/*.html', 'assets/scripts/*.js'],
         options: {
           livereload: true
         }
@@ -45,7 +48,7 @@ module.exports = function (grunt) {
     },
     jshint: {
       // define the files to lint
-      files: ['Gruntfile.js', 'assets/javascripts/**/*.js'],
+      files: ['Gruntfile.js', 'assets/scripts/*.js'],
       // configure JSHint (documented at http://www.jshint.com/docs/)
       options: {
           // more options here if you want to override JSHint defaults
