@@ -1,21 +1,23 @@
 {
   "name": "generator-newsapp",
-  "version": "0.0.0",
-  "description": "A generator for Yeoman",
+  "version": "0.1.0",
+  "description": "A generator for news apps. Built for Yeoman",
   "keywords": [
-    "yeoman-generator"
+    "yeoman-generator",
+    "newsapps",
+    "generator-newsapps"
   ],
-  "homepage": "https://github.com/aboutaaron/generator-newsapp",
-  "bugs": "https://github.com/aboutaaron/generator-newsapp/issues",
+  "homepage": "https://github.com/cirlabs/generator-newsapp",
+  "bugs": "https://github.com/cirlabs/generator-newsapp/issues",
   "author": {
     "name": "Aaron Williams",
-    "email": "aaron.colby.williams@gmail.com",
+    "email": "awilliams@cironline.org",
     "url": "https://github.com/aboutaaron"
   },
   "main": "app/index.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/aboutaaron/generator-newsapp.git"
+    "url": "git://github.com/cirlabs/generator-newsapp.git"
   },
   "scripts": {
     "test": "mocha"
