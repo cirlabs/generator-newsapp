@@ -133,8 +133,8 @@ NewsappGenerator.prototype.app = function app() {
 
   this.copy('main.js', 'assets/scripts/main.js');
   this.mkdir('assets/styles/scss')
-  this.copy('_headers.scss', 'assets/styles/_headers.scss');
-  this.copy('_defaults.scss', 'assets/styles/_defaults.scss');
+  this.copy('_headers.scss', 'assets/styles/scss/_headers.scss');
+  this.copy('_defaults.scss', 'assets/styles/scss/_defaults.scss');
   this.template('_main.scss', 'assets/styles/scss/main.scss');
 
   this.copy('_package.json', 'package.json');
