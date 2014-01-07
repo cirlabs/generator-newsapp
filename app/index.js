@@ -128,32 +128,46 @@ NewsappGenerator.prototype.askFor = function askFor() {
 };
 
 NewsappGenerator.prototype.app = function app() {
+  // Store `this` context in self var
   var self = this;
 
   if (self.django) {
+    // Django Template
     self.mkdir('assets');
+    self.mkdir('assets/styles/scss')
     self.template('_django.html', 'templates/index.html');
     self.template('_header.html', 'templates/_header.html');
     self.template('_header-slim.html', 'templates/_header-slim.html');
     self.template('_header-comp2.html', 'templates/_header-comp2.html');
+    self.template('_header-comp2.scss', 'assets/styles/scss/_header-comp2.scss');
+    self.copy('main.js', 'assets/scripts/main.js');
+    self.copy('_headers.scss', 'assets/styles/scss/_headers.scss');
+    self.copy('_defaults.scss', 'assets/styles/scss/_defaults.scss');
+    self.template('_main.scss', 'assets/styles/scss/main.scss');
   } else {
+    // Flat Graphic Template
     self.mkdir('app');
-    self.mkdir('app/templates');
+    self.mkdir('app/styles/')
+    self.mkdir('app/scripts/')
+
+    // index
+    self.template('_flatGraphic.html', 'app/index.html');
+
+    // styles
+    self.copy('_headers.scss', 'app/styles/scss/_headers.scss');
+    self.copy('_defaults.scss', 'app/styles/scss/_defaults.scss');
+    self.template('_main.scss', 'app/styles/scss/main.scss');
+
+    // JS
+    self.copy('main.js', 'app/scripts/main.js');
   }
 
-  this.template('_header-comp2.scss', 'assets/styles/scss/_header-comp2.scss');
-  this.copy('main.js', 'assets/scripts/main.js');
-  this.mkdir('assets/styles/scss')
-  this.copy('_headers.scss', 'assets/styles/scss/_headers.scss');
-  this.copy('_defaults.scss', 'assets/styles/scss/_defaults.scss');
-  this.template('_main.scss', 'assets/styles/scss/main.scss');
-
-  this.copy('_package.json', 'package.json');
-  this.template('_bower.json', 'bower.json');
-  this.copy('_README.md', 'README.md');
+  self.copy('_package.json', 'package.json');
+  self.template('_bower.json', 'bower.json');
+  self.copy('_README.md', 'README.md');
 
 
-  this.template('Gruntfile.js', 'Gruntfile.js')  
+  self.template('Gruntfile.js', 'Gruntfile.js')  
 };
 
 NewsappGenerator.prototype.projectfiles = function projectfiles() {

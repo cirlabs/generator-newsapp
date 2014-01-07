@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" >
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= appname %></title>
+    <!-- Typekit and Google Fonts -->
+    <script type="text/javascript" src="//use.typekit.net/quu2bck.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+    
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,300italic' rel='stylesheet' type='text/css'>
+    <link rel="shortcut icon" type="image/x-icon" href="http://cironline.org/sites/all/themes/cir/favicon.ico">
+    <!-- JS lib css -->
+    <% if (hasLeaflet) { %><link rel="stylesheet" href="bower_components/leaflet-dist/leaflet.css"><% } %>
+    <% if (hasjQueryUI) { %><link rel="stylesheet" href="bower_components/jquery-ui/themes/base/minified/jquery.ui.theme.min.css"><% } %>
+    <!-- App CSS -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- Modernizr -->
+    <script src="bower_components/modernizr/modernizr.js"></script>
+  </head>
+  <body>
+    <header class="header-comp2">
+        <a href="http://cironline.org" class="logo">
+            <img src="https://s3.amazonaws.com/media.apps.cironline.org/shared/img/CIR_BUG_transparent_web_white.png" alt="Visit cironline.org">
+        </a>
+        <div class="header-container">
+            <a class="headline" href="/">
+                <h1><%= appname %></h1>
+            </a>
+            <div class="menu">
+                <i class="fa fa-bars"></i>
+            </div>
+            <div class="share">
+                <i class="fa fa-share"></i>
+                <p id="share-text">Share</p>
+            </div>
+        </div>
+    </header>
+
+    <div class="main container">
+      <div class="row">
+        <div class="<% if (zurbFoundation) { %>large-8 large-offset-2 columns<% } %><% if (compassBootstrap) { %>col-lg-8 col-lg-offset-2<% } %>">
+          <div class="banner">
+            <h1><%= appname %></h1>
+            <p>Boom! Welcome to your news app. It features:</p>
+          </div>
+          <ul>
+            <% if (compassBootstrap) { %><li>Bootstrap CSS Framework and JS</li><% } %>
+            <% if (zurbFoundation) { %><li>Zurb Foundation CSS Framework and JS</li><% } %>
+            <li>jQuery <span id="jquery-version"></span></li>
+            <li>Modernizr</li>
+            <% if (hasLeaflet) { %><li>Leaflet.js</li><% } %>
+            <% if (hasMoment) { %><li>Moment.js</li><% } %>
+            <% if (hasD3) { %><li>D3.js</li><% } %>
+            <% if (hasjQueryUI) { %><li>jQuery UI</li><% } %>
+            <% if (hasEmber) { %><li>Ember.js (and Handlebars.js)</li><% } %>
+            <% if (hasBackbone) { %><li>Backbone.js (and Underscore.js)</li><% } %>
+            <% if (hasAngular) { %><li>Angular.js</li><% } %>
+            <li> ... and is setup to work with Django!</li>
+          </ul>
+
+          <p class="message">Go forth and save journalism!</p>
+        </div>
+      </div>
+    </div>
+    <!-- JavaScript -->
+
+    <script src="bower_components/jquery/jquery.js"></script>
+    <!-- Other Includes -->
+    <% if (hasLeaflet) { %><script src="bower_components/leaflet-dist/leaflet.js"></script><% } %>
+    <% if (hasMoment) { %><script src="bower_components/moment/min/moment.min.js"></script><% } %>
+    <% if (hasD3) { %><script src="bower_components/d3/d3.min.js"></script><% } %>
+    <% if (hasjQueryUI) { %><script src="bower_components/jquery-ui/ui/minified/jquery-ui.min.js"></script><% } %>
+    <% if (hasEmber) { %><script src="bower_components/ember/ember.js"></script>
+    <script src="bower_components/handlebars/handlebars.js"></script><% } %>
+    <% if (hasBackbone) { %><script src="bower_components/underscore/underscore.js"></script>
+    <script src="bower_components/backbone/backbone.js"></script><% } %>
+    <% if (hasAngular) { %><script src="bower_components/angular/angular.js"></script><% } %>
+    <!-- CSS Framework JS -->
+    <% if (compassBootstrap) { %><script src="bower_components/sass-bootstrap/dist/js/bootstrap.min.js"></script><% } %>
+    <% if (zurbFoundation) { %><script src="bower_components/foundation/js/foundation.min.js"></script><% } %>
+
+    <script src="scripts/main.js"></script>
+
+  </body>
+</html>
