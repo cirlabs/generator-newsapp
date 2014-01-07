@@ -31,10 +31,10 @@ NewsappGenerator.prototype.askFor = function askFor() {
     {
       type: 'list',
       name: 'appType',
-      message: 'Hey! Before we get started, are you building a standalone web app or a Django Template?',
+      message: 'Hey! Before we get started, are you building a standalone flat interactive graphic or a Django template?',
       choices: [{
-        name: 'Web App',
-        value: 'webapp'
+        name: 'Flat Graphic',
+        value: 'flatGraphic'
       }, {
         name: 'Django Template',
         value: 'django'
@@ -106,7 +106,7 @@ NewsappGenerator.prototype.askFor = function askFor() {
 
     // manually deal with the response, get back and store the results.
     // we change a bit this way of doing to automatically do this in the self.prompt() method.
-    this.webapp = hasFeature('webapp', appType);
+    this.flatGraphic = hasFeature('flatGraphic', appType);
     this.django = hasFeature('django', appType);
 
     this.hasLeaflet = hasFeature('hasLeaflet', features);
