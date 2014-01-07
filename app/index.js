@@ -70,6 +70,10 @@ NewsappGenerator.prototype.askFor = function askFor() {
         {
           name: 'Zurb Foundation 5',
           value: 'zurbFoundation',
+        },
+        {
+          name: 'None',
+          value: 'noneCSS',
         }]
     },
     { // MVC JS
@@ -85,6 +89,9 @@ NewsappGenerator.prototype.askFor = function askFor() {
       }, {
         name: 'Ember.js',
         value: 'hasEmber'
+      }, {
+        name: 'None',
+        value: 'hasNone'
       }]
     }
   ];
@@ -109,10 +116,12 @@ NewsappGenerator.prototype.askFor = function askFor() {
 
     this.compassBootstrap = hasFeature('compassBootstrap', cssFramework);
     this.zurbFoundation = hasFeature('zurbFoundation', cssFramework);
+    this.noneCSS = hasFeature('noneCSS', cssFramework)
 
     this.hasBackbone = hasFeature('hasBackbone', mvcJS);
     this.hasAngular = hasFeature('hasAngular', mvcJS);
     this.hasEmber = hasFeature('hasEmber', mvcJS);
+    this.hasNone = hasFeature('hasNone', mvcJS);
 
     cb();
   }.bind(this));
