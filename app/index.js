@@ -126,11 +126,13 @@ NewsappGenerator.prototype.app = function app() {
     self.template('_django.html', 'templates/index.html');
     self.template('_header.html', 'templates/_header.html');
     self.template('_header-slim.html', 'templates/_header-slim.html');
+    self.template('_header-comp2.html', 'templates/_header-comp2.html');
   } else {
     self.mkdir('app');
     self.mkdir('app/templates');
   }
 
+  this.template('_header-comp2.scss', 'assets/styles/scss/_header-comp2.scss');
   this.copy('main.js', 'assets/scripts/main.js');
   this.mkdir('assets/styles/scss')
   this.copy('_headers.scss', 'assets/styles/scss/_headers.scss');

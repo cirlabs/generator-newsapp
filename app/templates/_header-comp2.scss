@@ -44,9 +44,9 @@ $proxima-nova: "proxima-nova-condensed", sans-serif;
 
       h1 {
         font-family: $metaserif;
-        font-size: 1.5em;
+        font-size: 18px;
         font-weight: bold;
-        margin: 15px 0;
+        margin: 18px 0;
       }
     }
 
@@ -57,11 +57,12 @@ $proxima-nova: "proxima-nova-condensed", sans-serif;
       color: #fff;
 
       p {
+        font-family: $proxima-nova;
         border-right: 1px solid rgba(255, 255, 255, 0.4);
-        padding: 10px 10px 10px 0;
+        padding: 10px 15px 10px 0;
         display: inline-block;
         text-transform: uppercase;
-        font-weight: bold;
+        font-weight: 400;
       }
     }
 
