@@ -127,6 +127,23 @@ NewsappGenerator.prototype.askFor = function askFor() {
   }.bind(this));
 };
 
+NewsappGenerator.prototype.gruntfile = function gruntfile() {
+  this.template('Gruntfile.js');
+};
+
+NewsappGenerator.prototype.packageJSON = function packageJSON() {
+  this.template('_package.json', 'package.json');
+};
+
+NewsappGenerator.prototype.jshint = function jshint() {
+  this.copy('jshintrc', '.jshintrc');
+};
+
+NewsappGenerator.prototype.bower = function bower() {
+  this.template('_bower.json', 'bower.json');
+  this.template('_bowerrc', '.bowerrc')
+}
+
 NewsappGenerator.prototype.app = function app() {
   // Store `this` context in self var
   var self = this;
@@ -163,17 +180,4 @@ NewsappGenerator.prototype.app = function app() {
     // JS
     self.copy('main.js', 'app/scripts/main.js');
   }
-
-  self.template('_package.json', 'package.json');
-  self.template('_bower.json', 'bower.json');
-  self.copy('_README.md', 'README.md');
-
-
-  self.template('Gruntfile.js', 'Gruntfile.js')  
-};
-
-NewsappGenerator.prototype.projectfiles = function projectfiles() {
-  this.copy('editorconfig', '.editorconfig');
-  this.copy('jshintrc', '.jshintrc');
-  this.template('_bowerrc', '.bowerrc');
 };
