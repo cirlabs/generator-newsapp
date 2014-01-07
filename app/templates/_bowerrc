@@ -1,4 +1,3 @@
 {
-  <% if (webapp) { %>"directory": "app/bower_components"<% } %>
-  <% if (django) { %>"directory": "assets/bower_components"<% } %>
+  <% if (flatGraphic) { %>"directory": "app/bower_components"<% } %><% if (django) { %>"directory": "assets/bower_components"<% } %>
 }

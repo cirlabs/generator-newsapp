@@ -149,6 +149,8 @@ NewsappGenerator.prototype.app = function app() {
     self.mkdir('app');
     self.mkdir('app/styles/')
     self.mkdir('app/scripts/')
+    self.mkdir('app/images/');
+    self.mkdir('app/data/');
 
     // index
     self.template('_flatGraphic.html', 'app/index.html');
