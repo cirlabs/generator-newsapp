@@ -4,7 +4,7 @@
 module.exports = function (grunt) {
 
   // configurable paths
-  var yeomanConfig = {
+  var yeoman = {
     app: 'app',
     dist: 'dist'
   };
@@ -19,17 +19,41 @@ module.exports = function (grunt) {
       css: {
         files: ['*/styles/scss/*.scss'],
         tasks: ['sass'],
-        options: {
-          livereload: true
-        }
+        <% if (django) { %> options: { livereload: true } <% } %>
       },
       src: {
         files: ['*/*.html', '*/scripts/*.js'],
+        <% if (django) { %> options: { livereload: true } <% } %>
+      },
+  <% if (flatGraphic) { %>
+        livereload: {
+          options: {
+            livereload: '<%%= connect.options.livereload %>'
+          },
+          files: [
+            'app/*.html',
+            'app/scripts/*.js',
+            'app/styles/scss/*.scss'
+          ]
+        }
+  <% } %>
+    }, // watch
+<% if (flatGraphic) { %>
+    // grunt server
+    connect: {
+      options: {
+        port: 9000,
+        livereload: 35729,
+        hostname: '0.0.0.0'
+      },
+      livereload: {
         options: {
-          livereload: true
+          open: true,
+          base: ['<%%= yeoman.app %>']
         }
       }
-    },
+    }
+<% } %>
     sass: { // Task
       dist: { // Target
         files: { // Dictionary of files
@@ -65,6 +89,16 @@ module.exports = function (grunt) {
     'sass', 
     'watch'
   ]);
+  
+<% if (flatGraphic) { %>
+  grunt.registerTask('serve', [
+    grunt.task.run([
+      'sass',
+      'connect:livereload',
+      'watch'
+    ]);
+  ]);
+<% } %>
 
 
   // grunt.registerTask('build', [
