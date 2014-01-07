@@ -1,8 +1,13 @@
 language: node_js
 node_js:
-  - '0.8'
-  - '0.10'
+- '0.8'
+- '0.10'
 before_install:
-  - currentfolder=${PWD##*/}
-  - if [ "$currentfolder" != 'generator-newsapp' ]; then cd .. && eval "mv $currentfolder generator-newsapp" && cd generator-newsapp; fi
-
+- currentfolder=${PWD##*/}
+- if [ "$currentfolder" != 'generator-newsapp' ]; then cd .. && eval "mv $currentfolder
+  generator-newsapp" && cd generator-newsapp; fi
+deploy:
+  api_key:
+    secure: Vq+rli6cNb402O2HYpS56Okh6CTkf/zwAFa3kKHsp6bFpluWLWDVQRaOFs52jjno4u6jiNGIBMzIg6LD6+ayfoIkvUTm1N0xfovcWNFfOXzfscd83TbgXdUY9kfEvidDjQRQHawouYxzLyvoUo/BGiZ08vvlcAvbW4c0I6IuxQ8=
+  email: aaron.colby.williams@gmail.com
+  provider: npm
