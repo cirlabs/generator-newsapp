@@ -13,16 +13,18 @@ module.exports = function (grunt) {
   require('load-grunt-tasks')(grunt);
 
   grunt.initConfig({
-    yeoman: yeomanConfig,
+    yeoman: yeoman,
     pkg: grunt.file.readJSON('package.json'),
     watch: {
       css: {
-        files: ['*/styles/scss/*.scss'],
+        <% if (django) { %>files: ['assets/styles/scss/*.scss'],<% } %>
+        <% if (flatGraphic) { %>files: ['app/styles/scss/*.scss'],<% } %>
         tasks: ['sass'],
         <% if (django) { %> options: { livereload: true } <% } %>
       },
       src: {
-        files: ['*/*.html', '*/scripts/*.js'],
+        <% if (django) { %>files: ['templates/*.html', 'assets/scripts/*.js'],<% } %>
+        <% if (flatGraphic) { %>files: ['app/*.html', 'app/scripts/*.js'],<% } %>
         <% if (django) { %> options: { livereload: true } <% } %>
       },
   <% if (flatGraphic) { %>
@@ -52,12 +54,14 @@ module.exports = function (grunt) {
           base: ['<%%= yeoman.app %>']
         }
       }
-    }
+    },
 <% } %>
     sass: { // Task
       dist: { // Target
         files: { // Dictionary of files
-          '*/styles/main.css': '*/styles/scss/main.scss'// 'dest': 'source'
+          // 'dest': 'source'
+          <% if (django) { %>'assets/styles/main.css': 'assets/styles/scss/main.scss'<% } %>
+          <% if (flatGraphic) { %>'app/styles/main.css': 'app/styles/scss/main.scss'<% } %>
         }
       }
     },
@@ -89,14 +93,14 @@ module.exports = function (grunt) {
     'sass', 
     'watch'
   ]);
-  
+
 <% if (flatGraphic) { %>
   grunt.registerTask('serve', [
     grunt.task.run([
       'sass',
       'connect:livereload',
       'watch'
-    ]);
+    ])
   ]);
 <% } %>
 

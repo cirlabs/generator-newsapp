@@ -173,6 +173,7 @@ NewsappGenerator.prototype.app = function app() {
     self.template('_flatGraphic.html', 'app/index.html');
 
     // styles
+    self.template('_header-comp2.scss', 'app/styles/scss/_header-comp2.scss');
     self.copy('_headers.scss', 'app/styles/scss/_headers.scss');
     self.copy('_defaults.scss', 'app/styles/scss/_defaults.scss');
     self.template('_main.scss', 'app/styles/scss/main.scss');
