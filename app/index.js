@@ -164,7 +164,7 @@ NewsappGenerator.prototype.app = function app() {
     self.copy('main.js', 'app/scripts/main.js');
   }
 
-  self.copy('_package.json', 'package.json');
+  self.template('_package.json', 'package.json');
   self.template('_bower.json', 'bower.json');
   self.copy('_README.md', 'README.md');
 
