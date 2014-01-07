@@ -16,42 +16,29 @@ module.exports = function (grunt) {
     yeoman: yeoman,
     pkg: grunt.file.readJSON('package.json'),
     watch: {
+      options: {
+        livereload: true
+      },
       css: {
         <% if (django) { %>files: ['assets/styles/scss/*.scss'],<% } %>
         <% if (flatGraphic) { %>files: ['app/styles/scss/*.scss'],<% } %>
         tasks: ['sass'],
-        <% if (django) { %> options: { livereload: true } <% } %>
       },
       src: {
         <% if (django) { %>files: ['templates/*.html', 'assets/scripts/*.js'],<% } %>
         <% if (flatGraphic) { %>files: ['app/*.html', 'app/scripts/*.js'],<% } %>
-        <% if (django) { %> options: { livereload: true } <% } %>
-      },
-  <% if (flatGraphic) { %>
-        livereload: {
-          options: {
-            livereload: '<%%= connect.options.livereload %>'
-          },
-          files: [
-            'app/*.html',
-            'app/scripts/*.js',
-            'app/styles/scss/*.scss'
-          ]
-        }
-  <% } %>
+      }
     }, // watch
 <% if (flatGraphic) { %>
     // grunt server
     connect: {
-      options: {
-        port: 9000,
-        livereload: 35729,
-        hostname: '0.0.0.0'
-      },
-      livereload: {
+      server: {
         options: {
+          port: 9000,
+          hostname: '0.0.0.0',
           open: true,
-          base: ['<%%= yeoman.app %>']
+          base: 'app',
+          livereload: 35729
         }
       }
     },
@@ -96,11 +83,9 @@ module.exports = function (grunt) {
 
 <% if (flatGraphic) { %>
   grunt.registerTask('serve', [
-    grunt.task.run([
-      'sass',
-      'connect:livereload',
-      'watch'
-    ])
+    'sass',
+    'connect',
+    'watch'
   ]);
 <% } %>
 
