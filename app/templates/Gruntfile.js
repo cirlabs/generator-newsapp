@@ -42,6 +42,79 @@ module.exports = function (grunt) {
         }
       }
     },
+    // Renames files for browser caching purposes
+    rev: {
+      dist: {
+        files: {
+          src: [
+            '<%%= yeoman.dist %>/scripts/{,*/}*.js',
+            '<%%= yeoman.dist %>/styles/{,*/}*.css',
+            '<%%= yeoman.dist %>/images/{,*/}*.{gif,jpeg,jpg,png,webp}',
+            '<%%= yeoman.dist %>/styles/fonts/{,*/}*.*'
+          ]
+        }
+      }
+    },
+    // Reads HTML for usemin blocks to enable smart builds that automatically
+    // concat, minify and revision files. Creates configurations in memory so
+    // additional tasks can operate on them
+    useminPrepare: {
+      options: {
+        dest: '<%%= yeoman.dist %>'
+      },
+      html: '<%%= yeoman.app %>/index.html'
+    },
+
+    // Performs rewrites based on rev and the useminPrepare configuration
+    usemin: {
+      options: {
+        assetsDirs: ['<%%= yeoman.dist %>']
+      },
+      html: ['<%%= yeoman.dist %>/{,*/}*.html'],
+      css: ['<%%= yeoman.dist %>/styles/{,*/}*.css']
+    },
+
+    // The following *-min tasks produce minified files in the dist folder
+    imagemin: {
+      dist: {
+        files: [{
+          expand: true,
+          cwd: '<%%= yeoman.app %>/images',
+          src: '{,*/}*.{gif,jpeg,jpg,png}',
+          dest: '<%%= yeoman.dist %>/images'
+        }]
+      }
+    },
+    // svgmin: {
+    //     dist: {
+    //         files: [{
+    //             expand: true,
+    //             cwd: '<%%= yeoman.app %>/images',
+    //             src: '{,*/}*.svg',
+    //             dest: '<%%= yeoman.dist %>/images'
+    //         }]
+    //     }
+    // },
+    htmlmin: {
+      dist: {
+        options: {
+          collapseBooleanAttributes: true,
+          collapseWhitespace: true,
+          removeAttributeQuotes: true,
+          removeCommentsFromCDATA: true,
+          removeEmptyAttributes: true,
+          removeOptionalTags: true,
+          removeRedundantAttributes: true,
+          useShortDoctype: true
+        },
+        files: [{
+          expand: true,
+          cwd: '<%%= yeoman.dist %>',
+          src: '{,*/}*.html',
+          dest: '<%%= yeoman.dist %>'
+        }]
+      }
+    },
 <% } %>
     sass: { // Task
       dist: { // Target
@@ -87,19 +160,17 @@ module.exports = function (grunt) {
     'connect',
     'watch'
   ]);
+
+  grunt.registerTask('build', [
+    //'clean:dist',
+    'useminPrepare',
+    //'concurrent:dist',
+    'cssmin',
+    'concat',
+    'uglify',
+    'copy',
+    'rev',
+    'usemin'
+  ]);
 <% } %>
-
-
-  // grunt.registerTask('build', [
-  //   'clean:dist',
-  //   'useminPrepare',
-  //   'concurrent:dist',
-  //   'cssmin',
-  //   'concat',
-  //   'uglify',
-  //   'copy',
-  //   'rev',
-  //   'usemin'
-  // ]);
-
 }

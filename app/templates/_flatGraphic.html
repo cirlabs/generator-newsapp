@@ -13,10 +13,12 @@
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,300italic' rel='stylesheet' type='text/css'>
     <link rel="shortcut icon" type="image/x-icon" href="http://cironline.org/sites/all/themes/cir/favicon.ico">
     <!-- JS lib css -->
+    <!-- build:css styles/main.css -->
     <% if (hasLeaflet) { %><link rel="stylesheet" href="bower_components/leaflet-dist/leaflet.css"><% } %>
     <% if (hasjQueryUI) { %><link rel="stylesheet" href="bower_components/jquery-ui/themes/base/minified/jquery.ui.theme.min.css"><% } %>
     <!-- App CSS -->
     <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
     <!-- Modernizr -->
     <script src="bower_components/modernizr/modernizr.js"></script>
   </head>
@@ -67,6 +69,7 @@
     </div>
     <!-- JavaScript -->
 
+    <!-- build:js scripts/libs.js -->
     <script src="bower_components/jquery/jquery.js"></script>
     <!-- Other Includes -->
     <% if (hasLeaflet) { %><script src="bower_components/leaflet-dist/leaflet.js"></script><% } %>
@@ -81,8 +84,21 @@
     <!-- CSS Framework JS -->
     <% if (compassBootstrap) { %><script src="bower_components/sass-bootstrap/dist/js/bootstrap.min.js"></script><% } %>
     <% if (zurbFoundation) { %><script src="bower_components/foundation/js/foundation.min.js"></script><% } %>
+    <!-- endbuild -->
 
+    <!-- build:js scripts/main.js -->
     <script src="scripts/main.js"></script>
+    <!-- endbuild -->
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <script>
+        (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+        e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+        e.src='//www.google-analytics.com/analytics.js';
+        r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+        ga('create','UA-XXXXX-X');ga('send','pageview');
+    </script>
 
     <!-- Live Reload -->
     <script src="//localhost:35729/livereload.js"></script>
