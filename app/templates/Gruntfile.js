@@ -142,6 +142,14 @@ module.exports = function (grunt) {
         src: '{,*/}*.css'
       }
     },
+    inject: {
+      single: {
+        scriptSrc: ['workflow.js'],
+        files: {
+          'app/index.html'
+        }
+      }
+    }
 <% } %>
     sass: { // Task
       dist: { // Target
@@ -183,6 +191,7 @@ module.exports = function (grunt) {
 
 <% if (flatGraphic) { %>
   grunt.registerTask('serve', [
+    'inject',
     'sass',
     'connect',
     'watch'
