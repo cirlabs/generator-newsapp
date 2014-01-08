@@ -129,7 +129,7 @@ module.exports = function (grunt) {
             'images/{,*/}*.webp',
             '{,*/}*.html',
             'bower_components/font-awesome/fonts/*.*',
-            'styles/fonts/{,*/}*.*'<% if (hasBootstrap) { %>,
+            'styles/fonts/{,*/}*.*'<% if (compassBootstrap) { %>,
             'bower_components/' + 'sass-' + 'bootstrap/' + 'fonts/' +'*.*'<% } %>
           ]
         }]
