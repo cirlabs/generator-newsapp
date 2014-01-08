@@ -1,4 +1,4 @@
-# generator-newsapp [![Build Status](https://secure.travis-ci.org/cirlabs/generator-newsapp.png?branch=master)](http://travis-ci.org/cirlabs/generator-newsapp) [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
+# generator-newsapp [![NPM version](https://badge.fury.io/js/generator-newsapp.png)](http://badge.fury.io/js/generator-newsapp) [![Build Status](https://secure.travis-ci.org/cirlabs/generator-newsapp.png?branch=master)](http://travis-ci.org/cirlabs/generator-newsapp) [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
 Part of CIRs three-part deploy:
 
