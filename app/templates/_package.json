@@ -25,7 +25,8 @@
     "grunt-concurrent": "~0.1.0",
     "load-grunt-tasks": "~0.2.0",
     "connect-livereload": "~0.1.4",
-    "time-grunt": "~0.1.1"
+    "time-grunt": "~0.1.1",
+    "grunt-inject": "~0.1.1"
   },
   "engines": {
     "node": ">=0.10.0"

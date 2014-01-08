@@ -144,10 +144,8 @@ module.exports = function (grunt) {
     },
     inject: {
       single: {
-        scriptSrc: ['workflow.js'],
-        files: {
-          'app/index.html'
-        }
+        scriptSrc: 'workflow.js',
+        files: 'app/index.html'
       }
     },
     // Empties folders to start fresh
@@ -183,11 +181,13 @@ module.exports = function (grunt) {
     },
     jshint: {
       // define the files to lint
-      files: ['Gruntfile.js', '*/scripts/*.js'],
+      files: ['Gruntfile.js', 'app/scripts/*.js'],
       // configure JSHint (documented at http://www.jshint.com/docs/)
       options: {
           // more options here if you want to override JSHint defaults
         globals: {
+          Handlebars: true,
+          L: true,
           jQuery: true,
           console: true,
           module: true
@@ -203,7 +203,7 @@ module.exports = function (grunt) {
 
 <% if (flatGraphic) { %>
   grunt.registerTask('serve', [
-    // 'inject', // this fails
+    'inject',
     'sass',
     'connect',
     'watch'
