@@ -115,6 +115,33 @@ module.exports = function (grunt) {
         }]
       }
     },
+    // Copies remaining files to places other tasks can use
+    copy: {
+      dist: {
+        files: [{
+          expand: true,
+          dot: true,
+          cwd: '<%%= yeoman.app %>',
+          dest: '<%%= yeoman.dist %>',
+          src: [
+            '*.{ico,png,txt}',
+            '.htaccess',
+            'images/{,*/}*.webp',
+            '{,*/}*.html',
+            'bower_components/font-awesome/fonts/*.*',
+            'styles/fonts/{,*/}*.*'<% if (hasBootstrap) { %>,
+            'bower_components/' + 'sass-' + 'bootstrap/' + 'fonts/' +'*.*'<% } %>
+          ]
+        }]
+      },
+      styles: {
+        expand: true,
+        dot: true,
+        cwd: '<%%= yeoman.app %>/styles',
+        dest: '.tmp/styles/',
+        src: '{,*/}*.css'
+      }
+    },
 <% } %>
     sass: { // Task
       dist: { // Target
