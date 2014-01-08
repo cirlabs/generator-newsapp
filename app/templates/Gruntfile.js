@@ -149,7 +149,19 @@ module.exports = function (grunt) {
           'app/index.html'
         }
       }
-    }
+    },
+    // Empties folders to start fresh
+    clean: {
+      dist: {
+        files: [{
+          dot: true,
+          src: [
+            '<%%= yeoman.dist %>/*',
+            '!<%%= yeoman.dist %>/.git*'
+          ]
+        }]
+      }
+    },
 <% } %>
     sass: { // Task
       dist: { // Target
@@ -198,7 +210,7 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('build', [
-    //'clean:dist',
+    'clean:dist',
     'useminPrepare',
     //'concurrent:dist',
     'cssmin',
