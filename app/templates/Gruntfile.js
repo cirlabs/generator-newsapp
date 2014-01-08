@@ -203,7 +203,7 @@ module.exports = function (grunt) {
 
 <% if (flatGraphic) { %>
   grunt.registerTask('serve', [
-    'inject',
+    // 'inject', // this fails
     'sass',
     'connect',
     'watch'
