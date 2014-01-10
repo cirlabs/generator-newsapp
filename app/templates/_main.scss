@@ -6,7 +6,8 @@ $fa-font-path: "../bower_components/font-awesome/fonts";
 @import '../../bower_components/font-awesome/scss/font-awesome';
 
 // Header
-@import 'header-comp2';
+<% if (django || flatGraphic) { %>@import 'header-comp2';<% } %>
+<% if (djangoGeneric || flatGraphicGeneric) { %>@import 'headers';<% } %>
 // Defaults
 @import 'defaults';
 
