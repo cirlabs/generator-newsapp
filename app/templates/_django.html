@@ -28,7 +28,11 @@
   </head>
   <body>
   <!-- Header -->
-<% if (django) { %>{% include '_header-comp2.html' %}<% } %><% if (djangoGeneric) { %>{% include '_header-generic.html' %<% } %>
+<% if (django) { %>{% include '_header-comp2.html' %}<% } %>
+<% if (djangoGeneric) { %>
+    <% if (compassBootstrap) { %>{% include '_header-bootstrap.html' %}<% } %>
+    <% if (zurbFoundation) { %>{% include '_header-foundation.html' %}<% } %>
+<% } %>
     <div class="main container">
       <div class="row">
         <div class="<% if (zurbFoundation) { %>large-8 large-offset-2 columns<% } %><% if (compassBootstrap) { %>col-lg-8 col-lg-offset-2<% } %>">
