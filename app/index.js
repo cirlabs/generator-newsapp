@@ -196,6 +196,10 @@ NewsappGenerator.prototype.django = function django() {
     self.template('_header-slim.html', 'templates/_header-slim.html');
     self.template('_header-comp2.html', 'templates/_header-comp2.html');
 
+    // Generic headers
+    if (self.compassBootstrap) { self.template('_header-bootstrap.html', 'templates/_header-bootstrap.html'); }
+    if (self.zurbFoundation) { self.template('_header-foundation.html', 'templates/_header-foundation.html'); }
+
     // SCSS
     self.template('_header-comp2.scss', 'assets/styles/scss/_header-comp2.scss');
     self.copy('_headers.scss', 'assets/styles/scss/_headers.scss');
