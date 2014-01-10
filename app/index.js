@@ -195,7 +195,6 @@ NewsappGenerator.prototype.django = function django() {
     self.template('_header-slim.html', 'templates/_header-slim.html');
     self.template('_header-slim.html', 'templates/_header-slim.html');
     self.template('_header-comp2.html', 'templates/_header-comp2.html');
-    self.template('_header-generic.html', 'templates/_header-generic.html');
 
     // SCSS
     self.template('_header-comp2.scss', 'assets/styles/scss/_header-comp2.scss');
