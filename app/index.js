@@ -31,13 +31,19 @@ NewsappGenerator.prototype.askFor = function askFor() {
     {
       type: 'list',
       name: 'appType',
-      message: 'Hey! Before we get started, are you building a standalone flat interactive graphic or a Django template?',
+      message: 'Choose a template type:',
       choices: [{
-        name: 'Flat Graphic',
+        name: 'Flat Graphic (CIR)',
         value: 'flatGraphic'
       }, {
-        name: 'Django Template',
+        name: 'Django Template (CIR)',
         value: 'django'
+      }, {
+        name: 'Flat Graphic (Generic)',
+        value: 'flatGraphicGeneric'
+      }, {
+        name: 'Django Template (Generic)',
+        value: 'djangoGeneric'
       }]
     },
     {
@@ -108,6 +114,9 @@ NewsappGenerator.prototype.askFor = function askFor() {
     // we change a bit this way of doing to automatically do this in the self.prompt() method.
     this.flatGraphic = hasFeature('flatGraphic', appType);
     this.django = hasFeature('django', appType);
+    this.flatGraphicGeneric = hasFeature('flatGraphicGeneric', appType);
+    this.djangoGeneric = hasFeature('djangoGeneric', appType);
+
 
     this.hasLeaflet = hasFeature('hasLeaflet', features);
     this.hasD3 = hasFeature('hasD3', features);
@@ -141,27 +150,13 @@ NewsappGenerator.prototype.jshint = function jshint() {
 
 NewsappGenerator.prototype.bower = function bower() {
   this.template('_bower.json', 'bower.json');
-  this.template('_bowerrc', '.bowerrc')
+  this.template('_bowerrc', '.bowerrc');
 }
 
-NewsappGenerator.prototype.app = function app() {
-  // Store `this` context in self var
+NewsappGenerator.prototype.graphic = function graphic () {
   var self = this;
 
-  if (self.django) {
-    // Django Template
-    self.mkdir('assets');
-    self.mkdir('assets/styles/scss')
-    self.template('_django.html', 'templates/index.html');
-    self.template('_header.html', 'templates/_header.html');
-    self.template('_header-slim.html', 'templates/_header-slim.html');
-    self.template('_header-comp2.html', 'templates/_header-comp2.html');
-    self.template('_header-comp2.scss', 'assets/styles/scss/_header-comp2.scss');
-    self.copy('main.js', 'assets/scripts/main.js');
-    self.copy('_headers.scss', 'assets/styles/scss/_headers.scss');
-    self.copy('_defaults.scss', 'assets/styles/scss/_defaults.scss');
-    self.template('_main.scss', 'assets/styles/scss/main.scss');
-  } else {
+  if (self.flatGraphic || self.flatGraphicGeneric) {
     // Flat Graphic Template
     self.mkdir('app');
     self.mkdir('app/styles/')
@@ -180,5 +175,35 @@ NewsappGenerator.prototype.app = function app() {
 
     // JS
     self.copy('main.js', 'app/scripts/main.js');
+  }
+}
+
+NewsappGenerator.prototype.django = function django() {
+  // Store `this` context in self var
+  var self = this;
+
+  if (self.django || self.djangoGeneric) {
+    // Directories
+    self.mkdir('assets');
+    self.mkdir('assets/styles/scss');
+
+    // Index Page
+    self.template('_django.html', 'templates/index.html');
+
+    // Various Headers
+    self.template('_header.html', 'templates/_header.html');
+    self.template('_header-slim.html', 'templates/_header-slim.html');
+    self.template('_header-slim.html', 'templates/_header-slim.html');
+    self.template('_header-comp2.html', 'templates/_header-comp2.html');
+    self.template('_header-generic.html', 'templates/_header-generic.html');
+
+    // SCSS
+    self.template('_header-comp2.scss', 'assets/styles/scss/_header-comp2.scss');
+    self.copy('_headers.scss', 'assets/styles/scss/_headers.scss');
+    self.copy('_defaults.scss', 'assets/styles/scss/_defaults.scss');
+    self.template('_main.scss', 'assets/styles/scss/main.scss');
+
+    // JS
+    self.copy('main.js', 'assets/scripts/main.js');
   }
 };
