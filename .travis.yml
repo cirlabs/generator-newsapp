@@ -7,6 +7,6 @@ before_install:
   generator-newsapp" && cd generator-newsapp; fi
 deploy:
   api_key:
-    secure: Vq+rli6cNb402O2HYpS56Okh6CTkf/zwAFa3kKHsp6bFpluWLWDVQRaOFs52jjno4u6jiNGIBMzIg6LD6+ayfoIkvUTm1N0xfovcWNFfOXzfscd83TbgXdUY9kfEvidDjQRQHawouYxzLyvoUo/BGiZ08vvlcAvbW4c0I6IuxQ8=
+    secure: MAW9t9hDKeLmY6f/xZu0NZzfGfJXMWm2jZcXUlzQtjhl8wUYKxvQyU4IF/bntQ1OeEG96scrJOsfgXD/jZd7cG2vFC+SM5PHXhodshf7PFcGubwirYrdRklcM3XzXvx6w+uRyFlIq0GqRyFWwtYEv5ceSgxZn2LEIbj8SSj3JRg=
   email: aaron.colby.williams@gmail.com
   provider: npm
