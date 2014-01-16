@@ -3,6 +3,7 @@
 
 var path    = require('path');
 var helpers = require('yeoman-generator').test;
+var assert  = require('assert');
 
 
 describe('newsapp generator', function () {
@@ -24,71 +25,71 @@ describe('newsapp generator', function () {
         this.app = require('../app');
     });
 
-    it('creates expected files for Django CIR template', function (done) {
-        var expected = [
-            // add files you expect to exist here.
-            '.jshintrc',
-            '.editorconfig'
-        ];
+    // it('creates expected files for Django CIR template', function (done) {
+    //     var expected = [
+    //         // add files you expect to exist here.
+    //         '.jshintrc',
+    //         '.editorconfig'
+    //     ];
 
-        helpers.mockPrompt(this.app, {
-            'someOption': true
-        });
-        this.app.options['skip-install'] = true;
-        this.app.run({}, function () {
-            helpers.assertFiles(expected);
-            done();
-        });
-    });
+    //     helpers.mockPrompt(this.app, {
+    //         'someOption': true
+    //     });
+    //     this.app.options['skip-install'] = true;
+    //     this.app.run({}, function () {
+    //         helpers.assertFiles(expected);
+    //         done();
+    //     });
+    // });
 
-    it('creates expected files for Django generic template', function (done) {
-        var expected = [
-            // add files you expect to exist here.
-            '.jshintrc',
-            '.editorconfig'
-        ];
+    // it('creates expected files for Django generic template', function (done) {
+    //     var expected = [
+    //         // add files you expect to exist here.
+    //         '.jshintrc',
+    //         '.editorconfig'
+    //     ];
 
-        helpers.mockPrompt(this.app, {
-            'someOption': true
-        });
-        this.app.options['skip-install'] = true;
-        this.app.run({}, function () {
-            helpers.assertFiles(expected);
-            done();
-        });
-    });
+    //     helpers.mockPrompt(this.app, {
+    //         'someOption': true
+    //     });
+    //     this.app.options['skip-install'] = true;
+    //     this.app.run({}, function () {
+    //         helpers.assertFiles(expected);
+    //         done();
+    //     });
+    // });
 
-    it('creates expected files for Flat Graphic CIR template', function (done) {
-        var expected = [
-            // add files you expect to exist here.
-            '.jshintrc',
-            '.editorconfig'
-        ];
+    // it('creates expected files for Flat Graphic CIR template', function (done) {
+    //     var expected = [
+    //         // add files you expect to exist here.
+    //         '.jshintrc',
+    //         '.editorconfig'
+    //     ];
 
-        helpers.mockPrompt(this.app, {
-            'someOption': true
-        });
-        this.app.options['skip-install'] = true;
-        this.app.run({}, function () {
-            helpers.assertFiles(expected);
-            done();
-        });
-    });
+    //     helpers.mockPrompt(this.app, {
+    //         'someOption': true
+    //     });
+    //     this.app.options['skip-install'] = true;
+    //     this.app.run({}, function () {
+    //         helpers.assertFiles(expected);
+    //         done();
+    //     });
+    // });
 
-    it('creates expected files for Flat Graphic generic template', function (done) {
-        var expected = [
-            // add files you expect to exist here.
-            '.jshintrc',
-            '.editorconfig'
-        ];
+    // it('creates expected files for Flat Graphic generic template', function (done) {
+    //     var expected = [
+    //         // add files you expect to exist here.
+    //         '.jshintrc',
+    //         '.editorconfig'
+    //     ];
 
-        helpers.mockPrompt(this.app, {
-            'someOption': true
-        });
-        this.app.options['skip-install'] = true;
-        this.app.run({}, function () {
-            helpers.assertFiles(expected);
-            done();
-        });
-    });
+    //     helpers.mockPrompt(this.app, {
+    //         'someOption': true
+    //     });
+    //     this.app.options['skip-install'] = true;
+    //     this.app.run({}, function () {
+    //         helpers.assertFiles(expected);
+    //         done();
+    //     });
+    // });
 });
