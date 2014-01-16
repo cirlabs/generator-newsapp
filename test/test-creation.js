@@ -19,7 +19,63 @@ describe('newsapp generator', function () {
         }.bind(this));
     });
 
-    it('creates expected files', function (done) {
+    it('the generator can be required without throwing', function () {
+        // not testing the actual run of generators yet
+        this.app = require('../app');
+    });
+
+    it('creates expected files for Django CIR template', function (done) {
+        var expected = [
+            // add files you expect to exist here.
+            '.jshintrc',
+            '.editorconfig'
+        ];
+
+        helpers.mockPrompt(this.app, {
+            'someOption': true
+        });
+        this.app.options['skip-install'] = true;
+        this.app.run({}, function () {
+            helpers.assertFiles(expected);
+            done();
+        });
+    });
+
+    it('creates expected files for Django generic template', function (done) {
+        var expected = [
+            // add files you expect to exist here.
+            '.jshintrc',
+            '.editorconfig'
+        ];
+
+        helpers.mockPrompt(this.app, {
+            'someOption': true
+        });
+        this.app.options['skip-install'] = true;
+        this.app.run({}, function () {
+            helpers.assertFiles(expected);
+            done();
+        });
+    });
+
+    it('creates expected files for Flat Graphic CIR template', function (done) {
+        var expected = [
+            // add files you expect to exist here.
+            '.jshintrc',
+            '.editorconfig'
+        ];
+
+        helpers.mockPrompt(this.app, {
+            'someOption': true
+        });
+        this.app.options['skip-install'] = true;
+        this.app.run({}, function () {
+            helpers.assertFiles(expected);
+            done();
+        });
+    });
+
+    it('creates expected files for Flat Graphic generic template', function (done) {
         var expected = [
             // add files you expect to exist here.
             '.jshintrc',
