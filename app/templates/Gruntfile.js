@@ -179,6 +179,11 @@ module.exports = function (grunt) {
         // files to concatenate
       }
     },
+    'bower-install': {
+      target: {
+        src: <%= if (flatGraphic) { %>['app/index.html']<% } %><%= if (django) { %>['templates/index.html']<% } %>
+      }
+    },
     jshint: {
       // define the files to lint
       files: ['Gruntfile.js', 'app/scripts/*.js'],
