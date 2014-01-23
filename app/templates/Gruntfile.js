@@ -181,7 +181,7 @@ module.exports = function (grunt) {
     },
     'bower-install': {
       target: {
-        src: <%= if (flatGraphic) { %>['app/index.html']<% } %><%= if (django) { %>['templates/index.html']<% } %>
+        src: <% if (flatGraphic) { %>['app/index.html']<% } %><% if (django) { %>['templates/index.html']<% } %>
       }
     },
     jshint: {
