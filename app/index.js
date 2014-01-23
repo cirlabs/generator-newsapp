@@ -145,7 +145,13 @@ NewsappGenerator.prototype.packageJSON = function packageJSON() {
 };
 
 NewsappGenerator.prototype.jshint = function jshint() {
+  var self = this;
+
   this.copy('jshintrc', '.jshintrc');
+  
+  if (self.flatGraphic || self.flatGraphicGeneric) {
+    this.copy('gitignore', '.gitignore');
+  }
 };
 
 NewsappGenerator.prototype.bower = function bower() {
