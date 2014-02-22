@@ -25,8 +25,8 @@ module.exports = function (grunt) {
         tasks: ['sass', 'autoprefixer'],
       },
       src: {
-        <% if (django) { %>files: ['templates/*.html', 'assets/scripts/*.js', 'assets/scripts/**/*.js', 'Gruntfile.js'],<% } %>
-        <% if (flatGraphic) { %>files: ['app/*.html', 'app/scripts/*.js', 'app/scripts/**/*.js', 'Gruntfile.js'],<% } %>
+        <% if (django) { %>files: ['templates/**/*.html', 'assets/scripts/**/*.js', 'Gruntfile.js'],<% } %>
+        <% if (flatGraphic) { %>files: ['app/**/*.html', 'app/scripts/**/*.js', 'Gruntfile.js'],<% } %>
       }
     }, // watch
     autoprefixer: {
