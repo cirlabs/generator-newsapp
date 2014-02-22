@@ -22,13 +22,26 @@ module.exports = function (grunt) {
       css: {
         <% if (django) { %>files: ['assets/styles/scss/*.scss'],<% } %>
         <% if (flatGraphic) { %>files: ['app/styles/scss/*.scss'],<% } %>
-        tasks: ['sass'],
+        tasks: ['sass', 'autoprefixer'],
       },
       src: {
         <% if (django) { %>files: ['templates/*.html', 'assets/scripts/*.js', 'assets/scripts/**/*.js', 'Gruntfile.js'],<% } %>
         <% if (flatGraphic) { %>files: ['app/*.html', 'app/scripts/*.js', 'app/scripts/**/*.js', 'Gruntfile.js'],<% } %>
       }
     }, // watch
+    autoprefixer: {
+      options: {
+        browsers: ['last 1 version']
+      },
+      dist: {
+        files: [{
+          expand: true,
+          cwd: '.tmp/styles/',
+          src: '{,*/}*.css',
+          dest: '.tmp/styles/'
+        }]
+      }
+    },
 <% if (flatGraphic) { %>
     // grunt server
     connect: {
@@ -234,6 +247,7 @@ module.exports = function (grunt) {
     'clean:dist',
     'useminPrepare',
     //'concurrent:dist',
+    'autoprefixer',
     'cssmin',
     'concat',
     'uglify',
