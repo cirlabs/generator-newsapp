@@ -148,6 +148,20 @@ module.exports = function (grunt) {
         files: 'app/index.html'
       }
     },
+    shell: {
+      prep: {
+        command: [
+          'git add dist',
+          'git commit -m "initial subtreee commit"',
+        ].join('&&')
+      },
+      ghPages: {
+        command: 'git subtree push --prefix dist origin gh-pages',
+        options: {
+          stdout: true
+        }
+      }
+    },
     // Empties folders to start fresh
     clean: {
       dist: {
@@ -226,6 +240,15 @@ module.exports = function (grunt) {
     'copy',
     'rev',
     'usemin'
+  ]);
+
+  grunt.registerTask('deploy', [
+    'shell:prep',
+    'shell:ghPages'
+  ]);
+
+  grunt.registerTask('push', [
+    'shell:ghPages'
   ]);
 <% } %>
 }
