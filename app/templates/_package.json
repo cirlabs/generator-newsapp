@@ -12,7 +12,7 @@
     "grunt-contrib-connect": "~0.7.0",
     "grunt-bower-install": "~1.0.0",
     "grunt-contrib-clean": "~0.5.0",
-    "grunt-sass": "~0.8.1",
+    "grunt-sass": "~0.10.0",
     "grunt-notify": "~0.2.16",
     "grunt-contrib-htmlmin": "~0.2.0",
     "grunt-contrib-imagemin": "~0.5.0",
