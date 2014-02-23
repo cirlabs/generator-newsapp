@@ -1,5 +1,5 @@
 // CSS Framework
-<% if (compassBootstrap) { %>@import '../../bower_components/sass-bootstrap/lib/bootstrap';<% } %>
+<% if (compassBootstrap) { %>@import '../../bower_components/bootstrap-sass/vendor/assets/stylesheets/bootstrap';<% } %>
 <% if (zurbFoundation) { %>@import '../../bower_components/foundation/scss/normalize'; @import '../../bower_components/foundation/scss/foundation';<% } %>
 // Font Awesome Icons
 $fa-font-path: "../bower_components/font-awesome/fonts";

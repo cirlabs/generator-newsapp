@@ -6,7 +6,7 @@
     <% if (hasMoment) { %>"moment": "~2.4.0",<% } %>
     <% if (hasD3) { %>"d3": "~3.3.10",<% } %>
     <% if (hasjQueryUI) { %>"jquery-ui": "~1.10.3",<% } %>
-    <% if (compassBootstrap) { %>"sass-bootstrap": "~3.0.0",<% } %>
+    <% if (compassBootstrap) { %>"bootstrap-sass": "git://github.com/twbs/bootstrap-sass.git#~3.1.1",<% } %>
     <% if (zurbFoundation) { %>"foundation": "~5.0.0",<% } %>
     <% if (hasBackbone) { %>"backbone": "~1.0.0",
     "underscore": "~1.5.2",<% } %>
