@@ -1,18 +1,5 @@
 // CSS Framework
-<% if (compassBootstrap) { %>@import '../../bower_components/bootstrap-sass/vendor/assets/stylesheets/bootstrap';<% } %>
-<% if (zurbFoundation) { %>@import '../../bower_components/foundation/scss/normalize'; @import '../../bower_components/foundation/scss/foundation';<% } %>
-// Font Awesome Icons
-$fa-font-path: "../bower_components/font-awesome/fonts";
-@import '../../bower_components/font-awesome/scss/font-awesome';
-
-// Header
-<% if (django || flatGraphic) { %>@import 'header-comp2';<% } %>
-// Defaults
+<% if (compassBootstrap) { %>@import '../../bower_components/bootstrap-sass/vendor/assets/stylesheets/bootstrap';<% } %><% if (zurbFoundation) { %>@import '../../bower_components/foundation/scss/normalize'; @import '../../bower_components/foundation/scss/foundation';<% } %>
+// Project CSS
 @import 'defaults';
-
-// ==================
-// ** Project SCSS **
-// ==================
-
-// Add your code here or create a _*.scss file and import it
-// e.g., @import 'project'
+<% if (django || flatGraphic) { %>@import 'header';<% } %>

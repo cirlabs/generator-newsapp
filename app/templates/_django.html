@@ -7,18 +7,21 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="<%= appname %>">
+    <meta property="og:image" content="http://media.apps.cironline.org/richmond/images/logo1x.png">
+    <meta property="og:description" content="">
+
     <title><%= appname %></title>
-    <!-- Typekit and Google Fonts -->
+    <!-- Typekit and Font Awesome -->
     <script type="text/javascript" src="//use.typekit.net/quu2bck.js"></script>
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
-    
-    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,300italic' rel='stylesheet' type='text/css'>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="shortcut icon" type="image/x-icon" href="http://cironline.org/sites/all/themes/cir/favicon.ico">
 
     {% compress css %}
-    <!-- JS lib css -->
     <% if (hasLeaflet) { %><link rel="stylesheet" href="{% static "bower_components/leaflet-dist/leaflet.css" %}"><% } %>
     <% if (hasjQueryUI) { %><link rel="stylesheet" href="{% static "bower_components/jquery-ui/themes/base/minified/jquery.ui.theme.min.css" %}"><% } %>
+    <link rel="stylesheet" href="{% static "bower_components/animate.css/animate.css" %}">
     <!-- App CSS -->
     <link rel="stylesheet" href="{% static "styles/main.css" %}">
     {% endcompress %}
@@ -32,9 +35,9 @@
     <% if (compassBootstrap) { %>{% include '_header-bootstrap.html' %}<% } %>
     <% if (zurbFoundation) { %>{% include '_header-foundation.html' %}<% } %>
 <% } else { %>
-    {% include '_header-comp2.html' %}
+    {% include '_header.html' %}
 <% } %>
-    <div class="main container">
+    <div class="container">
       <div class="row">
         <div class="<% if (zurbFoundation) { %>large-8 large-offset-2 columns<% } %><% if (compassBootstrap) { %>col-lg-8 col-lg-offset-2<% } %>">
           <div class="banner">
@@ -60,6 +63,24 @@
         </div>
       </div>
     </div>
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">Share this story</h4>
+          </div>
+          <div class="modal-body">
+            <div id="share-icons">
+              <a class="facebook-button" href="#"><i class="fa fa-facebook-square"></i></a>
+              <a class="twitter-button" href="#"><i class="fa fa-twitter-square"></i></a>
+              <a class="email-button" href="#"><i class="fa fa-envelope"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- JavaScript -->
 
     {% compress js %}
@@ -81,6 +102,20 @@
     <!-- endbower -->
     <script src="{% static "scripts/main.js" %}"></script>
     {% endcompress %}
+
+    <!-- Analytics -->
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-2147301-15']);
+        _gaq.push(['_setDomainName', '.cironline.org']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
 
     {% if DEBUG %}
     <!-- livereload -->

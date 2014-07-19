@@ -1,17 +1,26 @@
-<header class="header">
-    <a href="http://cironline.org" class="logo">
-         <img src="http://article.cironline.org/images/cir-logo.png" alt="Visit cironline.org">
-    </a>
-    <nav class="nav">
-        <h1 class="project-name"><%= appname %></h1>
-        <ul class="nav-items">
-            <li><a href="#">Story</a></li>
-            <li><a href="#">Interactive</a></li>
-            <li><a href="#">About</a></li>
-        </ul>
-        <ul class="social">
-            <li><a href="#"><i class="fa fa-facebook-square"></i></a> </li>
-            <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
-        </ul>
-    </nav>
+{% load staticfiles %}
+<header class="header headroom">
+    <a
+    href="http://cironline.org"
+    class="logo"
+    title="Visit cironline.org"
+    style="background-image: url('http://media.apps.cironline.org/richmond/images/logo1x.png'); background-repeat: no-repeat; background-size: contain; background-position-x: center;"></a>
+
+
+    <div class="header-container">
+        <a class="headline" href="#">
+            <h1><%= appname %></h1>
+        </a>
+        <nav class="nav hidden-xs">
+            <ul>
+                <li>
+                    <a href="#">Article</a>
+                </li>
+            </ul>
+        </nav>
+        <% if (compassBootstrap) { %><a data-toggle="modal" data-target="#myModal" backdrop class="share hidden-xs">
+            <i class="fa fa-share"></i> Share
+        </a><% } %>
+    </div>
 </header>
+<!-- style="background-image: url('{% static "images/logo1x.png" %}'); background-repeat: no-repeat; background-size: contain; background-position-x: center;" -->

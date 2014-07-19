@@ -174,7 +174,6 @@ NewsappGenerator.prototype.graphic = function graphic () {
     self.template('_flatGraphic.html', 'app/index.html');
 
     // styles
-    self.template('_header-comp2.scss', 'app/styles/scss/_header-comp2.scss');
     self.copy('_headers.scss', 'app/styles/scss/_headers.scss');
     self.copy('_defaults.scss', 'app/styles/scss/_defaults.scss');
     self.template('_main.scss', 'app/styles/scss/main.scss');
@@ -194,7 +193,7 @@ NewsappGenerator.prototype.django = function django() {
     self.mkdir('assets/styles/scss');
 
     // Index Page
-    self.template('_django.html', 'templates/index.html');
+    self.template('_django.html', 'templates/base.html');
 
     // SCSS
     self.copy('_defaults.scss', 'assets/styles/scss/_defaults.scss');
@@ -207,12 +206,6 @@ NewsappGenerator.prototype.django = function django() {
   if (self.django) {
     // Various Headers
     self.template('_header.html', 'templates/_header.html');
-    self.template('_header-slim.html', 'templates/_header-slim.html');
-    self.template('_header-slim.html', 'templates/_header-slim.html');
-    self.template('_header-comp2.html', 'templates/_header-comp2.html');
-
-    // SCSS
-    self.template('_header-comp2.scss', 'assets/styles/scss/_header-comp2.scss');
     self.copy('_headers.scss', 'assets/styles/scss/_headers.scss');
   }
 
