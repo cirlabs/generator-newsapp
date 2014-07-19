@@ -2,4 +2,5 @@
 <% if (compassBootstrap) { %>@import '../../bower_components/bootstrap-sass/vendor/assets/stylesheets/bootstrap';<% } %><% if (zurbFoundation) { %>@import '../../bower_components/foundation/scss/normalize'; @import '../../bower_components/foundation/scss/foundation';<% } %>
 // Project CSS
 @import 'defaults';
+@import 'share';
 <% if (django || flatGraphic) { %>@import 'header';<% } %>
