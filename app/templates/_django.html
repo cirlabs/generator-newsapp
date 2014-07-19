@@ -96,8 +96,7 @@
     <% if (hasBackbone) { %><script src="{% static "bower_components/underscore/underscore.js" %}"></script>
     <script src="{% static "bower_components/backbone/backbone.js" %}"></script><% } %>
     <% if (hasAngular) { %><script src="{% static "bower_components/angular/angular.js" %}"></script><% } %>
-    <!-- CSS Framework JS -->
-    <% if (compassBootstrap) { %><script src="{% static "bower_components/bootstrap-sass/vendor/assets/javascripts/bootstrap.js" %}"></script></script><% } %>
+    <% if (compassBootstrap) { %><script src="{% static "bower_components/bootstrap-sass/vendor/assets/javascripts/bootstrap/modal.js" %}"></script></script><% } %>
     <% if (zurbFoundation) { %><script src="{% static "bower_components/foundation/js/foundation.min.js" %}"></script><% } %>
     <!-- endbower -->
     <script src="{% static "scripts/main.js" %}"></script>
