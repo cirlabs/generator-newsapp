@@ -19,7 +19,7 @@
     "headroom.js": "~0.5.0",
     "animate.css": "~3.1.1",
     "ractive": "~0.4.0",
-    "ractive-events-tap": "~0.1.0",
+    "ractive-events-tap": "~0.1.0"
   },
   "resolutions": {
     "jquery": "~1.10.2"
