@@ -1,0 +1,78 @@
+.modal-content { border-radius: 0;  }
+.modal-header {
+    background: black;
+    color: white;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: $proxima-nova;
+    .modal-title { font-size: 1.5em; }
+}
+
+.close {
+    text-shadow: 0;
+    opacity: 1;
+    color: white;
+
+    &:hover {
+        color: white;
+    }
+}
+
+.share {
+    margin: 10px 10px 0 0;
+    @media screen and (max-width: 1024px) { margin: 6px 6px 0 0; }
+    float: right;
+    display: inline-block;
+    color: #fff;
+    cursor: pointer;
+    font-family: $proxima-nova;
+    //border-right: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 10px 15px 10px 0;
+    display: inline-block;
+    text-transform: uppercase;
+    font-weight: 400;
+
+    &:hover {
+        color: $link-color;
+        text-decoration: none;
+    }
+
+  .fa-share {
+    // iPad fix
+    @media screen and (max-device-width: 1024px) {
+        position: absolute;
+        top: 13px;
+        left: 87%;
+        right: 0;
+    }
+  }
+}
+
+#share-icons {
+    margin: 0 auto;
+    width: 21em;
+
+    .fa {
+        font-size: 4em;
+        padding: 0.2em 0.4em;
+    }
+
+    .fa-facebook-square {
+        color: #3b5998;
+        &:hover {
+            color: darken(#3b5998, 10%);
+        }
+    }
+    .fa-twitter-square {
+        color: #4099ff;
+        &:hover {
+            color: darken(#4099ff, 10%);
+        }
+    }
+    .fa-envelope {
+        color: #f47d31;
+        &:hover {
+            color: darken(#f47d31, 10%);
+        }
+    }
+}
