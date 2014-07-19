@@ -230,8 +230,13 @@ module.exports = function (grunt) {
   });
 
   grunt.registerTask('default', [
-    'sass', 
+    'sass',
     'watch'
+  ]);
+
+  grunt.registerTask('build', [
+    'imagemin',
+    //'htmlbuild'
   ]);
 
 <% if (flatGraphic) { %>
