@@ -23,7 +23,7 @@ NewsappGenerator.prototype.askFor = function askFor() {
   // welcome message
   if (!this.options['skip-welcome-message']) {
     newsapp.banner();
-    console.log('Out of the box I include Modernizr and jQuery.');
+    console.log('Out of the box I include Modernizr, jQuery, Headroom.js and Ractive.');
   }
 
 
@@ -148,7 +148,7 @@ NewsappGenerator.prototype.jshint = function jshint() {
   var self = this;
 
   this.copy('jshintrc', '.jshintrc');
-  
+
   if (self.flatGraphic || self.flatGraphicGeneric) {
     this.copy('gitignore', '.gitignore');
   }
