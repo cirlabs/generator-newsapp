@@ -2,7 +2,7 @@
 @import '../../bower_components/sass-mediaqueries/media-queries';
 
 // ==================
-// ** HEADERS **
+// ** HEADER **
 // ==================
 
 // Typekit classes
@@ -70,7 +70,7 @@ $proxima-nova: "proxima-nova-condensed", sans-serif;
 
   .social {
     float: right;
-    
+
     @include screen(0px, 890px) {
       top: -26px;
     }
@@ -82,7 +82,7 @@ $proxima-nova: "proxima-nova-condensed", sans-serif;
     .fa {
       font-size: 1.3em;
       margin-bottom: 0.3em;
-    } 
+    }
   }
 }
 

@@ -174,7 +174,7 @@ NewsappGenerator.prototype.graphic = function graphic () {
     self.template('_flatGraphic.html', 'app/index.html');
 
     // styles
-    self.copy('_headers.scss', 'app/styles/scss/_headers.scss');
+    self.copy('_header.scss', 'app/styles/scss/_header.scss');
     self.copy('_defaults.scss', 'app/styles/scss/_defaults.scss');
     self.template('_main.scss', 'app/styles/scss/main.scss');
 
@@ -206,7 +206,7 @@ NewsappGenerator.prototype.django = function django() {
   if (self.django) {
     // Various Headers
     self.template('_header.html', 'templates/_header.html');
-    self.copy('_headers.scss', 'assets/styles/scss/_headers.scss');
+    self.copy('_header.scss', 'assets/styles/scss/_header.scss');
   }
 
   if (self.djangoGeneric) {
