@@ -51,11 +51,11 @@ To manually add dependencies, `bower install depName --save` to get the files, t
 ## Roadmap
 Here are some features we'd like to include in no particular order:
 
-- Grunt or Jake task to send `dist` folder to Github Pages or Amazon S3
+- ~~Grunt or Jake task to send `dist` folder to Github Pages or Amazon S3~~ [Yeoman Deployment](http://yeoman.io/learning/deployment.html)
 - Built-in templates for charts and other data-driven graphics
-- Auto add `bower install` dependencies to `index.html`
-- Test coverage and Travis CI integration for quality assurance
-- Generic, non-CIR template for news apps
+- Auto add `bower install` dependencies to `index.html` [grunt-wiredup implementation](https://github.com/stephenplusplus/grunt-wiredep)
+- ~~Test coverage and Travis CI integration for quality assurance~~
+- ~~Generic, non-CIR template for news apps~~
 
 ## Contributing
 CIR loves open-source. Will this repo is currently tailored for our needs, we do hope to slowly turn this repo into a more generic and modular generator. Any and all ideas are welcome. Feel free to open an issue with any suggestions.
