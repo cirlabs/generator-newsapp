@@ -1,5 +1,5 @@
 {
-  "name": "generator-webapp",
+  "name": "generator-newsapp",
   "version": "0.3.0",
   "description": "Scaffold a news web app or django app.",
   "license": "BSD",
