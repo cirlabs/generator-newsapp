@@ -1,3 +1,6 @@
 node_modules
-app/bower_components
-.jshintrc
+dist
+.tmp<% if (includeSass) { %>
+.sass-cache<% } %>
+bower_components
+credentials.json

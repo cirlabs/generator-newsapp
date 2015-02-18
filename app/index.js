@@ -1,219 +1,223 @@
 'use strict';
-var util = require('util');
-var path = require('path');
+
+var join = require('path').join;
 var yeoman = require('yeoman-generator');
-var newsapp = require('../lib/newsapp');
+var chalk = require('chalk');
 
+module.exports = yeoman.generators.Base.extend({
+  constructor: function () {
+    yeoman.generators.Base.apply(this, arguments);
 
-var NewsappGenerator = module.exports = function NewsappGenerator(args, options, config) {
-  yeoman.generators.Base.apply(this, arguments);
+    this.pkg = require('../package.json');
+  },
 
-  this.on('end', function () {
-    this.installDependencies({ skipInstall: options['skip-install'] });
-  });
+  askFor: function () {
+    var done = this.async();
 
-  this.pkg = JSON.parse(this.readFileAsString(path.join(__dirname, '../package.json')));
-};
+    // welcome message
+    if (!this.options['skip-welcome-message']) {
+      this.log(require('yosay')());
+      this.log(chalk.magenta(
+        'Out of the box I include HTML5 Boilerplate, jQuery, and a ' +
+        'Gruntfile.js to build your app.'
+      ));
+    }
 
-util.inherits(NewsappGenerator, yeoman.generators.Base);
-
-NewsappGenerator.prototype.askFor = function askFor() {
-  var cb = this.async();
-
-  // welcome message
-  if (!this.options['skip-welcome-message']) {
-    newsapp.banner();
-    console.log('Out of the box I include Modernizr, jQuery, Headroom.js and Ractive.');
-  }
-
-
-  var prompts = [
-    {
+    var prompts = [{
       type: 'list',
-      name: 'appType',
-      message: 'Choose a template type:',
+      name: 'template',
+      message: 'Choose application template:',
       choices: [{
-        name: 'Flat Graphic (CIR)',
-        value: 'flatGraphic'
+        name: 'Django',
+        value: 'includeDjango'
       }, {
-        name: 'Django Template (CIR)',
-        value: 'django'
-      }, {
-        name: 'Flat Graphic (Generic)',
-        value: 'flatGraphicGeneric'
-      }, {
-        name: 'Django Template (Generic)',
-        value: 'djangoGeneric'
+        name: 'Webapp',
+        value: 'includeWebapp'
       }]
-    },
-    {
+    },{
       type: 'checkbox',
       name: 'features',
-      message: 'Which JavaScript libraries would you like?',
+      message: 'What more would you like?',
       choices: [{
-        name: 'Leaflet.js',
-        value: 'hasLeaflet',
-      }, {
-        name: 'D3.js',
-        value: 'hasD3',
-      }, {
-        name: 'Moment.js',
-        value: 'hasMoment',
-      }, {
-        name: 'jQuery UI',
-        value: 'hasjQueryUI',
+        name: 'Bootstrap',
+        value: 'includeBootstrap',
+        checked: true
+      },{
+        name: 'Sass',
+        value: 'includeSass',
+        checked: false
+      },{
+        name: 'Modernizr',
+        value: 'includeModernizr',
+        checked: false
       }]
-    },
-    { // CSS Framework
-      type: 'list',
-      name: 'cssFramework',
-      message: 'Which CSS framework would you like?',
-      choices: [{
-          name: 'Bootstrap 3 for Sass',
-          value: 'compassBootstrap',
-          checked: true
-        },
-        {
-          name: 'Zurb Foundation 5',
-          value: 'zurbFoundation',
-        },
-        {
-          name: 'None',
-          value: 'noneCSS',
-        }]
-    },
-    { // MVC JS
-      type: 'list',
-      name: 'mvcJS',
-      message: 'Which MVC JavaScript Framework would you like?',
-      choices: [{
-        name: 'Backbone.js',
-        value: 'hasBackbone',
-      }, {
-        name: 'Angular.js',
-        value: 'hasAngular'
-      }, {
-        name: 'Ember.js',
-        value: 'hasEmber'
-      }, {
-        name: 'None',
-        value: 'hasNone'
-      }]
+    }, {
+      when: function (answers) {
+        return answers && answers.features &&
+          answers.features.indexOf('includeSass') !== -1;
+      },
+      type: 'confirm',
+      name: 'libsass',
+      value: 'includeLibSass',
+      message: 'Would you like to use libsass? Read up more at \n' +
+        chalk.green('https://github.com/andrew/node-sass#node-sass'),
+      default: false
+    }];
+
+    this.prompt(prompts, function (answers) {
+      var features = answers.features;
+
+      function hasFeature(feat) {
+        return features && features.indexOf(feat) !== -1;
+      }
+
+      this.includeSass = hasFeature('includeSass');
+      this.includeBootstrap = hasFeature('includeBootstrap');
+      this.includeModernizr = hasFeature('includeModernizr');
+      this.includeDjango =  hasFeature('includeDjango');
+      this.includeWebapp = hasFeature('includeWebapp');
+
+      this.includeLibSass = answers.libsass;
+      this.includeRubySass = !answers.libsass;
+
+      done();
+    }.bind(this));
+  },
+
+  gruntfile: function () {
+    this.template('Gruntfile.js');
+  },
+
+  packageJSON: function () {
+    this.template('_package.json', 'package.json');
+  },
+
+  git: function () {
+    this.template('gitignore', '.gitignore');
+    this.copy('gitattributes', '.gitattributes');
+  },
+
+  bower: function () {
+    var bower = {
+      name: this._.slugify(this.appname),
+      private: true,
+      dependencies: {}
+    };
+
+    if (this.includeBootstrap) {
+      var bs = 'bootstrap' + (this.includeSass ? '-sass-official' : '');
+      bower.dependencies[bs] = "~3.2.0";
+    } else {
+      bower.dependencies.jquery = "~1.11.1";
     }
-  ];
 
-  this.prompt(prompts, function (props) {
-    var appType = props.appType,
-        features = props.features,
-        cssFramework = props.cssFramework,
-        mvcJS = props.mvcJS;
+    if (this.includeModernizr) {
+      bower.dependencies.modernizr = "~2.8.2";
+    }
 
-    function hasFeature(feat, propName) { return propName.indexOf(feat) !== -1; }
+    this.copy('bowerrc', '.bowerrc');
+    this.write('bower.json', JSON.stringify(bower, null, 2));
+  },
 
-    // manually deal with the response, get back and store the results.
-    // we change a bit this way of doing to automatically do this in the self.prompt() method.
-    this.flatGraphic = hasFeature('flatGraphic', appType);
-    this.django = hasFeature('django', appType);
-    this.flatGraphicGeneric = hasFeature('flatGraphicGeneric', appType);
-    this.djangoGeneric = hasFeature('djangoGeneric', appType);
+  jshint: function () {
+    this.copy('jshintrc', '.jshintrc');
+  },
 
+  editorConfig: function () {
+    this.copy('editorconfig', '.editorconfig');
+  },
 
-    this.hasLeaflet = hasFeature('hasLeaflet', features);
-    this.hasD3 = hasFeature('hasD3', features);
-    this.hasMoment = hasFeature('hasMoment', features);
-    this.hasjQueryUI = hasFeature('hasjQueryUI', features);
+  mainStylesheet: function () {
+    var css = 'main.' + (this.includeSass ? 's' : '') + 'css';
+    var stylePath = this.includeDjango ? 'assets/styles/' : 'app/styles/';
+    this.template(css, stylePath + css);
+  },
 
-    this.compassBootstrap = hasFeature('compassBootstrap', cssFramework);
-    this.zurbFoundation = hasFeature('zurbFoundation', cssFramework);
-    this.noneCSS = hasFeature('noneCSS', cssFramework)
+  writeIndex: function () {
+    var htmlFile = this.includeDjango ? 'base.html' : 'index.html';
 
-    this.hasBackbone = hasFeature('hasBackbone', mvcJS);
-    this.hasAngular = hasFeature('hasAngular', mvcJS);
-    this.hasEmber = hasFeature('hasEmber', mvcJS);
-    this.hasNone = hasFeature('hasNone', mvcJS);
+    this.indexFile = this.engine(
+      this.readFileAsString(join(this.sourceRoot(), htmlFile)),
+      this
+    );
 
-    cb();
-  }.bind(this));
-};
+    // wire Bootstrap plugins
+    if (this.includeBootstrap && !this.includeSass) {
+      var bs = 'bower_components/bootstrap/js/';
 
-NewsappGenerator.prototype.gruntfile = function gruntfile() {
-  this.template('Gruntfile.js');
-};
+      this.indexFile = this.appendFiles({
+        html: this.indexFile,
+        fileType: 'js',
+        optimizedPath: 'scripts/plugins.js',
+        sourceFileList: [
+          bs + 'affix.js',
+          bs + 'alert.js',
+          bs + 'dropdown.js',
+          bs + 'tooltip.js',
+          bs + 'modal.js',
+          bs + 'transition.js',
+          bs + 'button.js',
+          bs + 'popover.js',
+          bs + 'carousel.js',
+          bs + 'scrollspy.js',
+          bs + 'collapse.js',
+          bs + 'tab.js'
+        ],
+        searchPath: '.'
+      });
+    }
 
-NewsappGenerator.prototype.packageJSON = function packageJSON() {
-  this.template('_package.json', 'package.json');
-};
+    this.indexFile = this.appendFiles({
+      html: this.indexFile,
+      fileType: 'js',
+      optimizedPath: 'scripts/main.js',
+      sourceFileList: ['scripts/main.js'],
+      searchPath: ['app','.tmp']
+    });
+  },
 
-NewsappGenerator.prototype.jshint = function jshint() {
-  var self = this;
+  django: function () {
+    if (this.includeDjango) {
+      // Assets
+      this.mkdir('assets');
+      this.mkdir('assets/scripts');
+      this.mkdir('assets/styles');
+      this.mkdir('assets/images');
+      this.copy('main.js', 'assets/scripts/main.js');
 
-  this.copy('jshintrc', '.jshintrc');
+      // Templates
+      this.mkdir('templates');
+      this.template('base.html', 'templates/base.html');
+    }
+  },
 
-  if (self.flatGraphic || self.flatGraphicGeneric) {
-    this.copy('gitignore', '.gitignore');
+  app: function () {
+    if (this.includeWebapp) {
+      this.directory('app');
+      this.mkdir('app/scripts');
+      this.mkdir('app/styles');
+      this.mkdir('app/images');
+      this.write('app/index.html', this.indexFile);
+      this.copy('main.js', 'app/scripts/main.js');
+      this.copy('credentials.template', 'app/credentials.template');
+    }
+  },
+
+  install: function () {
+    this.on('end', function () {
+      this.invoke(this.options['test-framework'], {
+        options: {
+          'skip-message': this.options['skip-install-message'],
+          'skip-install': this.options['skip-install']
+        }
+      });
+
+      if (!this.options['skip-install']) {
+        this.installDependencies({
+          skipMessage: this.options['skip-install-message'],
+          skipInstall: this.options['skip-install']
+        });
+      }
+    });
   }
-};
-
-NewsappGenerator.prototype.bower = function bower() {
-  this.template('_bower.json', 'bower.json');
-  this.template('_bowerrc', '.bowerrc');
-}
-
-NewsappGenerator.prototype.graphic = function graphic () {
-  var self = this;
-
-  if (self.flatGraphic || self.flatGraphicGeneric) {
-    // Flat Graphic Template
-    self.mkdir('app');
-    self.mkdir('app/styles/')
-    self.mkdir('app/scripts/')
-    self.mkdir('app/images/');
-    self.mkdir('app/data/');
-
-    // index
-    self.template('_flatGraphic.html', 'app/index.html');
-
-    // styles
-    self.copy('_header.scss', 'app/styles/scss/_header.scss');
-    self.copy('_share.scss', 'app/styles/scss/_share.scss');
-    self.copy('_defaults.scss', 'app/styles/scss/_defaults.scss');
-    self.template('_main.scss', 'app/styles/scss/main.scss');
-
-    // JS
-    self.copy('main.js', 'app/scripts/main.js');
-  }
-}
-
-NewsappGenerator.prototype.django = function django() {
-  // Store `this` context in self var
-  var self = this;
-
-  if (self.django || self.djangoGeneric) {
-    // Directories
-    self.mkdir('assets');
-    self.mkdir('assets/styles/scss');
-
-    // Index Page
-    self.template('_django.html', 'templates/base.html');
-
-    // SCSS
-    self.copy('_defaults.scss', 'assets/styles/scss/_defaults.scss');
-    self.template('_main.scss', 'assets/styles/scss/main.scss');
-
-    // JS
-    self.copy('main.js', 'assets/scripts/main.js');
-  }
-
-  if (self.django) {
-    // Various Headers
-    self.template('_header.html', 'templates/_header.html');
-    self.copy('_header.scss', 'assets/styles/scss/_header.scss');
-    self.copy('_share.scss', 'assets/styles/scss/_share.scss');
-  }
-
-  if (self.djangoGeneric) {
-    // Generic headers
-    if (self.compassBootstrap) { self.template('_header-bootstrap.html', 'templates/_header-bootstrap.html'); }
-    if (self.zurbFoundation) { self.template('_header-foundation.html', 'templates/_header-foundation.html'); }
-  }
-};
+});

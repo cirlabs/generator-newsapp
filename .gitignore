@@ -2,3 +2,4 @@ node_modules/
 temp/
 *.tgz
 npm-debug.log
+_app
