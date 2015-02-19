@@ -133,48 +133,48 @@ module.exports = yeoman.generators.Base.extend({
     this.template(css, stylePath + css);
   },
 
-  writeIndex: function () {
-    var htmlFile = this.includeDjango ? 'base.html' : 'index.html';
+  // writeIndex: function () {
+  //   var htmlFile = this.includeDjango ? 'base.html' : 'index.html';
 
-    this.indexFile = this.engine(
-      this.readFileAsString(join(this.sourceRoot(), htmlFile)),
-      this
-    );
+  //   this.indexFile = this.engine(
+  //     this.readFileAsString(join(this.sourceRoot(), htmlFile)),
+  //     this
+  //   );
 
-    // wire Bootstrap plugins
-    if (this.includeBootstrap && !this.includeSass) {
-      var bs = 'bower_components/bootstrap/js/';
+  //   // wire Bootstrap plugins
+  //   if (this.includeBootstrap && !this.includeSass) {
+  //     var bs = 'bower_components/bootstrap/js/';
 
-      this.indexFile = this.appendFiles({
-        html: this.indexFile,
-        fileType: 'js',
-        optimizedPath: 'scripts/plugins.js',
-        sourceFileList: [
-          bs + 'affix.js',
-          bs + 'alert.js',
-          bs + 'dropdown.js',
-          bs + 'tooltip.js',
-          bs + 'modal.js',
-          bs + 'transition.js',
-          bs + 'button.js',
-          bs + 'popover.js',
-          bs + 'carousel.js',
-          bs + 'scrollspy.js',
-          bs + 'collapse.js',
-          bs + 'tab.js'
-        ],
-        searchPath: '.'
-      });
-    }
+  //     this.indexFile = this.appendFiles({
+  //       html: this.indexFile,
+  //       fileType: 'js',
+  //       optimizedPath: 'scripts/plugins.js',
+  //       sourceFileList: [
+  //         bs + 'affix.js',
+  //         bs + 'alert.js',
+  //         bs + 'dropdown.js',
+  //         bs + 'tooltip.js',
+  //         bs + 'modal.js',
+  //         bs + 'transition.js',
+  //         bs + 'button.js',
+  //         bs + 'popover.js',
+  //         bs + 'carousel.js',
+  //         bs + 'scrollspy.js',
+  //         bs + 'collapse.js',
+  //         bs + 'tab.js'
+  //       ],
+  //       searchPath: '.'
+  //     });
+  //   }
 
-    this.indexFile = this.appendFiles({
-      html: this.indexFile,
-      fileType: 'js',
-      optimizedPath: 'scripts/main.js',
-      sourceFileList: ['scripts/main.js'],
-      searchPath: ['app','.tmp']
-    });
-  },
+  //   this.indexFile = this.appendFiles({
+  //     html: this.indexFile,
+  //     fileType: 'js',
+  //     optimizedPath: 'scripts/main.js',
+  //     sourceFileList: ['scripts/main.js'],
+  //     searchPath: ['app','.tmp']
+  //   });
+  // },
 
   django: function () {
     if (this.includeDjango) {
@@ -193,31 +193,16 @@ module.exports = yeoman.generators.Base.extend({
 
   app: function () {
     if (this.includeWebapp) {
-      this.directory('app');
       this.mkdir('app/scripts');
       this.mkdir('app/styles');
       this.mkdir('app/images');
-      this.write('app/index.html', this.indexFile);
+      this.template('index.html', 'app/index.html');
       this.copy('main.js', 'app/scripts/main.js');
       this.copy('credentials.template', 'app/credentials.template');
     }
   },
 
   install: function () {
-    this.on('end', function () {
-      this.invoke(this.options['test-framework'], {
-        options: {
-          'skip-message': this.options['skip-install-message'],
-          'skip-install': this.options['skip-install']
-        }
-      });
-
-      if (!this.options['skip-install']) {
-        this.installDependencies({
-          skipMessage: this.options['skip-install-message'],
-          skipInstall: this.options['skip-install']
-        });
-      }
-    });
+    this.installDependencies();
   }
 });
