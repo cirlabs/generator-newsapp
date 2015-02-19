@@ -1,85 +1,47 @@
-# Web app generator [![Build Status](https://secure.travis-ci.org/yeoman/generator-webapp.svg?branch=master)](http://travis-ci.org/yeoman/generator-webapp)
+# generator-newsapp [![Build Status](https://secure.travis-ci.org/cirlabs/generator-newsapp.png?branch=master)](https://travis-ci.org/cirlabs/generator-newsapp)
 
-[Yeoman](http://yeoman.io) generator that scaffolds out a front-end web app.
-
-![](http://i.imgur.com/uKTT2Hj.png)
-
-## Features
-
-* CSS Autoprefixing
-* Built-in preview server with LiveReload
-* Automagically compile CoffeeScript & Sass
-* Automagically lint your scripts
-* Automagically wire up your Bower components with [grunt-wiredep](#third-party-dependencies).
-* Awesome Image Optimization (via OptiPNG, pngquant, jpegtran and gifsicle)
-* Mocha Unit Testing with PhantomJS
-* Bootstrap for Sass (Optional)
-* Leaner Modernizr builds (Optional)
-
-For more information on what `generator-webapp` can do for you, take a look at the [Grunt tasks](https://github.com/yeoman/generator-webapp/blob/master/app/templates/_package.json) used in our `package.json`.
+> [Yeoman](http://yeoman.io) generator
 
 
 ## Getting Started
 
-- Install: `npm install -g generator-webapp`
-- Run: `yo webapp`
-- Run `grunt` for building and `grunt serve` for preview[\*](#grunt-serve-note). `--allow-remote` option for remote access.
+### What is Yeoman?
 
+Trick question. It's not a thing. It's this guy:
 
-#### Third-Party Dependencies
+![](http://i.imgur.com/JHaAlBJ.png)
 
-*(HTML/CSS/JS/Images/etc)*
+Basically, he wears a top hat, lives in your computer, and waits for you to tell him what kind of application you wish to create.
 
-Third-party dependencies are managed with [grunt-wiredep](https://github.com/stephenplusplus/grunt-wiredep). Add new dependencies using **Bower** and then run the **Grunt** task to load them:
+Not every new computer comes with a Yeoman pre-installed. He lives in the [npm](https://npmjs.org) package repository. You only have to ask for him once, then he packs up and moves into your hard drive. *Make sure you clean up, he likes new and shiny things.*
 
-```sh
-$ bower install --save jquery
-$ grunt wiredep
+```bash
+npm install -g yo
 ```
 
-This works if the package author has followed the [Bower spec](https://github.com/bower/bower.json-spec). If the files are not automatically added to your source code, check with the package's repo for support and/or file an issue with them to have it updated.
+### Yeoman Generators
 
-To manually add dependencies, `bower install --save depName` to get the files, then add a `script` or `style` tag to your `index.html` or another appropriate place.
+Yeoman travels light. He didn't pack any generators when he moved in. You can think of a generator like a plug-in. You get to choose what type of application you wish to create, such as a Backbone application or even a Chrome extension.
 
-The components are installed in the root of the project at `/bower_components`. To reference them from index.html, use `src="bower_components"` or `src="/bower_components"`. Treat the `bower_components` directory as if it was a sibling to `index.html`.
+To install generator-newsapp from npm, run:
 
-*Testing Note*: a project checked into source control and later checked out needs to have `bower install` run from the `test` folder as well as from the project root.
+```bash
+npm install -g generator-newsapp
+```
 
+Finally, initiate the generator:
 
-#### Grunt Serve Note
+```bash
+yo newsapp
+```
 
-Note: `grunt server` was used for previewing in earlier versions of the project, and has since been deprecated in favor of `grunt serve`.
+### Getting To Know Yeoman
 
+Yeoman has a heart of gold. He's a person with feelings and opinions, but he's very easy to work with. If you think he's too opinionated, he can be easily convinced.
 
-## Docs
-
-We have [recipes](docs/recipes) for integrating other popular technologies like Compass.
-
-
-## Options
-
-* `--skip-install`
-
-  Skips the automatic execution of `bower` and `npm` after scaffolding has finished.
-
-* `--test-framework=<framework>`
-
-  Defaults to `mocha`. Can be switched for another supported testing framework like `jasmine`.
-
-* `--coffee`
-
-  Add support for [CoffeeScript](http://coffeescript.org/).
-
-
-## Contribute
-
-See the [contributing docs](https://github.com/yeoman/yeoman/blob/master/contributing.md).
-
-Note: We are regularly asked whether we can add or take away features. If a change is good enough to have a positive impact on all users, we are happy to consider it.
-
-If not, `generator-webapp` is fork-friendly and you can always maintain a custom version which you `npm install && npm link` to continue using via `yo webapp` or a name of your choosing.
+If you'd like to get to know Yeoman better and meet some of his friends, [Grunt](http://gruntjs.com) and [Bower](http://bower.io), check out the complete [Getting Started Guide](https://github.com/yeoman/yeoman/wiki/Getting-Started).
 
 
 ## License
 
-[BSD license](http://opensource.org/licenses/bsd-license.php)
+MIT

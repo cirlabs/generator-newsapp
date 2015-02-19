@@ -1,46 +1,36 @@
 {
   "name": "generator-newsapp",
   "version": "0.3.0",
-  "description": "Scaffold a news web app or django app.",
-  "license": "BSD",
-  "repository": "cirlabs/generator-newsapp",
-  "author": "Aaron Williams",
+  "description": "Yeoman generator",
+  "license": "MIT",
   "main": "app/index.js",
+  "repository": "cirlabs/generator-newsapp",
+  "author": {
+    "name": "Aaron Williams",
+    "email": "awilliams@cironline.org",
+    "url": "https://github.com/cirlabs/generator-newsapp"
+  },
   "engines": {
-    "node": ">=0.10.0",
-    "npm": ">=1.2.10"
+    "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "mocha --reporter spec"
+    "test": "mocha"
   },
   "files": [
     "app"
   ],
   "keywords": [
-    "yeoman-generator",
-    "web",
-    "app",
-    "front-end",
-    "h5bp",
-    "modernizr",
-    "jquery",
-    "grunt",
-    "newsapp",
-    "generator-newsapp",
-    "django"
+    "yeoman-generator"
   ],
   "dependencies": {
-    "chalk": "^0.5.1",
-    "cheerio": "^0.17.0",
-    "yeoman-generator": "~0.17.3",
-    "yosay": "~1.0.0"
+    "yeoman-generator": "^0.18.0",
+    "chalk": "^0.5.0",
+    "yosay": "^0.3.0"
   },
   "devDependencies": {
-    "mocha": "*",
-    "underscore": "^1.6.0"
+    "mocha": "*"
   },
   "peerDependencies": {
-    "yo": ">=1.2.0",
-    "generator-mocha": ">=0.1.0"
+    "yo": ">=1.0.0"
   }
 }

@@ -1,6 +1,0 @@
-node_modules
-dist
-.tmp<% if (includeSass) { %>
-.sass-cache<% } %>
-bower_components
-credentials.json
