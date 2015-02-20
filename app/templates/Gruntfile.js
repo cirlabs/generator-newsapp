@@ -420,7 +420,11 @@ module.exports = function (grunt) {
     'modernizr',<% } %>
     'rev',
     'usemin',
-    'htmlmin'<% } else { %>'wiredep'<% } %>
+    'htmlmin'<% } %><% if (includeDjango) { %>
+    'wiredep',
+    'sass',
+    'autoprefixer',
+    'htmlmin'
   ]);
 
   grunt.registerTask('default', [

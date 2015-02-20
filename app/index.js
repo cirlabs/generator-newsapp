@@ -81,27 +81,20 @@ module.exports = yeoman.generators.Base.extend({
   },
 
   writing: {
-    app: function () {
-      this.fs.copy(
-        this.templatePath('_package.json'),
-        this.destinationPath('package.json')
-      );
-      this.fs.copy(
-        this.templatePath('_bower.json'),
-        this.destinationPath('bower.json')
-      );
+    packageJSON: function () {
+      this.template('_package.json', 'package.json');
     },
-
-    projectfiles: function () {
-      this.fs.copy(
-        this.templatePath('editorconfig'),
-        this.destinationPath('.editorconfig')
-      );
-      this.fs.copy(
-        this.templatePath('jshintrc'),
-        this.destinationPath('.jshintrc')
-      );
-    }
+    gruntfile: function () {
+      this.template('Gruntfile.js');
+    },
+    git: function () {
+      // Django projects already contain a gitignore
+      // So we only need this for webapps
+      if (includeWebapp) { this.template('gitignore', '.gitignore'); }
+    },
+    jshint: function () {
+      this.copy('jshintrc', '.jshintrc');
+    },
   },
 
   install: function () {
