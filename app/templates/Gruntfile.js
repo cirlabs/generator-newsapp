@@ -20,7 +20,7 @@ module.exports = function (grunt) {
 
   // Configurable paths
   var config = {
-    app: <% if (includeDjango) { %> 'assets' <% } else { %> 'app' <% } %>,
+    app: <% if (includeDjango) { %>'assets'<% } else { %>'app'<% } %>,
     dist: 'dist'
   };
 
@@ -424,7 +424,7 @@ module.exports = function (grunt) {
     'wiredep',
     'sass',
     'autoprefixer',
-    'htmlmin'
+    'htmlmin'<% } %>
   ]);
 
   grunt.registerTask('default', [

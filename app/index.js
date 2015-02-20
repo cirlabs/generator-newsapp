@@ -62,16 +62,22 @@ module.exports = yeoman.generators.Base.extend({
 
     this.prompt(prompts, function (answers) {
       var features = answers.features;
+      var template = answers.template;
 
       function hasFeature(feat) {
         return features && features.indexOf(feat) !== -1;
       }
 
+      function hasTemplate(temp) {
+        return template && template.indexOf(temp) !== -1
+      }
+
       this.includeSass = hasFeature('includeSass');
       this.includeBootstrap = hasFeature('includeBootstrap');
       this.includeModernizr = hasFeature('includeModernizr');
-      this.includeDjango =  hasFeature('includeDjango');
-      this.includeWebapp = hasFeature('includeWebapp');
+
+      this.includeDjango =  hasTemplate('includeDjango');
+      this.includeWebapp = hasTemplate('includeWebapp');
 
       this.includeLibSass = answers.libsass;
       this.includeRubySass = !answers.libsass;
@@ -90,11 +96,29 @@ module.exports = yeoman.generators.Base.extend({
     git: function () {
       // Django projects already contain a gitignore
       // So we only need this for webapps
-      if (includeWebapp) { this.template('gitignore', '.gitignore'); }
+      this.template('gitignore', '.gitignore');
     },
     jshint: function () {
       this.copy('jshintrc', '.jshintrc');
     },
+    bower: function () {
+      // Since bower.json can be a JSON obj
+      // We'll just contruct the dependencies here
+      var bower = {
+        name: this._.slugify(this.appname),
+        private: true,
+        dependencies: {}
+      };
+
+      // Dependencies
+      bower.dependencies.jquery = "~1.11.1";
+      bower.dependencies.modernizr = "~2.8.2";
+      bower.dependencies.underscore = "~1.8.1";
+
+      // Write
+      this.template('bowerrc', '.bowerrc');
+      this.write('bower.json', JSON.stringify(bower, null, 2));
+    }
   },
 
   install: function () {
