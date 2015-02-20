@@ -110,15 +110,29 @@ module.exports = yeoman.generators.Base.extend({
         dependencies: {}
       };
 
-      // Dependencies
-      bower.dependencies.jquery = "~1.11.1";
-      bower.dependencies.modernizr = "~2.8.2";
-      bower.dependencies.underscore = "~1.8.1";
+      // jQuery is a dependency of Bootstrap
+      // so we only specify it if Bootstrap isn't installed
+      if (this.includeBootstrap) {
+        var bs = 'bootstrap' + (this.includeSass ? '-sass-official' : '');
+        bower.dependencies[bs] = "~3.2.0";
+
+      } else {
+        bower.dependencies.jquery = "~1.11.1";
+      }
+
+      if (this.includeModernizr) {
+        bower.dependencies.modernizr = "~2.8.2";
+      }
 
       // Write
       this.template('bowerrc', '.bowerrc');
       this.write('bower.json', JSON.stringify(bower, null, 2));
-    }
+    },
+    mainStylesheet: function () {
+      var css = 'main.' + (this.includeSass ? 's' : '') + 'css';
+      var stylePath = this.includeDjango ? 'assets/styles/' : 'app/styles/';
+      this.template(css, stylePath + css);
+    },
   },
 
   install: function () {

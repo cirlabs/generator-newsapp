@@ -34,8 +34,8 @@ module.exports = function (grunt) {
     aws: grunt.file.readJSON('credentials.json'),
     s3: {
       options: {
-        accessKeyId: '<%= aws.accessKeyId %>',
-        secretAccessKey: '<%= aws.secretAccessKey %>',
+        accessKeyId: '<%%= aws.accessKeyId %>',
+        secretAccessKey: '<%%= aws.secretAccessKey %>',
         bucket: 'apps-staging-cironline-org'
       },
       dist: {
