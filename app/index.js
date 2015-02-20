@@ -133,6 +133,10 @@ module.exports = yeoman.generators.Base.extend({
       var stylePath = this.includeDjango ? 'assets/styles/' : 'app/styles/';
       this.template(css, stylePath + css);
     },
+    mainJavascript: function () {
+      var scriptPath = this.includeDjango ? 'assets/scripts/' : 'app/scripts/';
+      this.copy('main.js', scriptPath + 'main.js');
+    }
   },
 
   install: function () {
