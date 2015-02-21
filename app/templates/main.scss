@@ -1,20 +1,13 @@
 <% if (includeBootstrap) { %>$icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
-// bower:scss
-@import "bootstrap-sass-official/assets/stylesheets/bootstrap.scss";
-// endbower
-}<% } else { %>// bower:scss
-// endbower
+@import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap.scss";
 <% } %>
 
-// Typekit classes
 $serif: "ff-meta-serif-web-pro", Georgia, serif;
 $small: "proxima-nova-condensed", sans-serif;
 $sans-serif: 'Lato', Helvetica, sans-serif;
 
-// Colors
 $link-color: rgb(243, 140, 33);
 $black: #222;
-
 
 body {
   font-size: 16px;
@@ -64,6 +57,7 @@ body {
   background: #ccc;
   color: #000;
   padding: 0.2em 0;
+}
 
 /* =================
    MEDIA QUERIES

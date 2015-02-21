@@ -128,6 +128,10 @@ module.exports = yeoman.generators.Base.extend({
       this.template('bowerrc', '.bowerrc');
       this.write('bower.json', JSON.stringify(bower, null, 2));
     },
+    images: function () {
+      var imagePath = this.includeDjango ? 'assets/images/' : 'app/images/';
+      this.mkdir(imagePath);
+    },
     mainStylesheet: function () {
       var css = 'main.' + (this.includeSass ? 's' : '') + 'css';
       var stylePath = this.includeDjango ? 'assets/styles/' : 'app/styles/';
@@ -136,9 +140,14 @@ module.exports = yeoman.generators.Base.extend({
     mainJavascript: function () {
       var scriptPath = this.includeDjango ? 'assets/scripts/' : 'app/scripts/';
       this.copy('main.js', scriptPath + 'main.js');
+    },
+    django: function () {
+      if (this.includeDjango) {
+        this.mkdir('templates');
+        this.template('base.html', 'templates/base.html');
+      }
     }
   },
-
   install: function () {
     this.installDependencies({
       skipInstall: this.options['skip-install']

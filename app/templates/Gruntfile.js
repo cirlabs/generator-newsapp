@@ -21,15 +21,15 @@ module.exports = function (grunt) {
   // Configurable paths
   var config = {
     app: <% if (includeDjango) { %>'assets'<% } else { %>'app'<% } %>,
-    dist: 'dist'
+    dist: <% if (includeDjango) { %>'static'<% } else { %>'dist'<% } %>,
   };
 
   // Define the configuration for all the tasks
   grunt.initConfig({
 
     // Project settings
-    config: config,<% if (includeWebapp) { %>
-
+    config: config,
+    <% if (includeWebapp) { %>
     // AWS deployment
     aws: grunt.file.readJSON('credentials.json'),
     s3: {
@@ -43,8 +43,8 @@ module.exports = function (grunt) {
         src: '**',
         dest: '<%= appname %>'
       }
-    },<% } %>
-
+    },
+    <% } %>
     // Watches files for changes and runs tasks based on the changed files
     watch: {
       bower: {
@@ -53,10 +53,10 @@ module.exports = function (grunt) {
       },
       js: {
         files: ['<%%= config.app %>/scripts/{,*/}*.js'],
-        tasks: ['jshint'],
+        tasks: ['jshint']<% if (includeWebapp) { %>,
         options: {
           livereload: '<%%= connect.options.livereload %>'
-        }
+        }<% } %>
       },
       gruntfile: {
         files: ['Gruntfile.js']
@@ -69,19 +69,20 @@ module.exports = function (grunt) {
         files: ['<%%= config.app %>/styles/{,*/}*.css'],
         tasks: ['newer:copy:styles', 'autoprefixer']
       },
-      livereload: {
+      livereload: {<% if (includeWebapp) { %>
         options: {
           livereload: '<%%= connect.options.livereload %>'
-        },
+        },<% } %>
         files: [
           'templates/{,*/}*.html',
-          '<%%= config.app %>/{,*/}*.html',
-          '.tmp/styles/{,*/}*.css',
+          '<%%= config.app %>/{,*/}*.html',<% if (includeDjango) { %>
+          '<%%= config.app %>/styles/{,*/}*.css',<% } else { %>
+          '.tmp/styles/{,*/}*.css',<% } %>
           '<%%= config.app %>/images/{,*/}*'
         ]
       }
     },
-
+    <% if (includeWebapp) { %>
     // The actual grunt server settings
     connect: {
       options: {
@@ -123,8 +124,7 @@ module.exports = function (grunt) {
         }]
       },
       server: '.tmp'
-    },
-
+    },<% } %>
     // Make sure code styles are up to par and there are no obvious mistakes
     jshint: {
       options: {
@@ -152,7 +152,7 @@ module.exports = function (grunt) {
           expand: true,
           cwd: '<%%= config.app %>/styles',
           src: ['*.{scss,sass}'],
-          dest: '.tmp/styles',
+          dest: <% if (includeDjango) { %>'<%%= config.app %>/styles'<% } else { %>'.tmp/styles'<% } %>,
           ext: '.css'
         }]
       },
@@ -161,7 +161,7 @@ module.exports = function (grunt) {
           expand: true,
           cwd: '<%%= config.app %>/styles',
           src: ['*.{scss,sass}'],
-          dest: '.tmp/styles',
+          dest: <% if (includeDjango) { %>'<%%= config.app %>/styles'<% } else { %>'.tmp/styles'<% } %>,
           ext: '.css'
         }]
       }
@@ -172,20 +172,20 @@ module.exports = function (grunt) {
       options: {
         browsers: ['> 1%', 'last 2 versions', 'Firefox ESR', 'Opera 12.1']<% if (includeSass) { %>,
         map: {
-          prev: '.tmp/styles/'
+          prev: <% if (includeDjango) { %>'<%%= config.app %>/styles'<% } else { %>'.tmp/styles'<% } %>
         }
         <% } %>
       },
       dist: {
         files: [{
           expand: true,
-          cwd: '.tmp/styles/',
+          cwd: <% if (includeDjango) { %>'<%%= config.app %>/styles'<% } else { %>'.tmp/styles'<% } %>,
           src: '{,*/}*.css',
-          dest: '.tmp/styles/'
+          dest: <% if (includeDjango) { %>'<%%= config.app %>/styles'<% } else { %>'.tmp/styles'<% } %>
         }]
       }
     },
-
+    <% if (includeWebapp) { %>
     // Automatically inject Bower components into the HTML file
     wiredep: {
       app: {
@@ -238,7 +238,7 @@ module.exports = function (grunt) {
       html: ['<%%= config.dist %>/{,*/}*.html'],
       css: ['<%%= config.dist %>/styles/{,*/}*.css']
     },
-
+    <% } /* End Webapp */ %>
     // The following *-min tasks produce minified files in the dist folder
     imagemin: {
       dist: {
@@ -421,14 +421,14 @@ module.exports = function (grunt) {
     'rev',
     'usemin',
     'htmlmin'<% } %><% if (includeDjango) { %>
-    'wiredep',
     'sass',
     'autoprefixer',
     'htmlmin'<% } %>
   ]);
 
-  grunt.registerTask('default', [
-    'wiredep',
+  grunt.registerTask('default', [<% if (includeWebapp) { %>
+    'wiredep',<% } %>
+    'sass',
     'autoprefixer',
     'watch'
   ]);
