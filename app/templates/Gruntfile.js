@@ -424,13 +424,14 @@ module.exports = function (grunt) {
     'rev',
     'usemin',
     'htmlmin'<% } %><% if (includeDjango) { %>
+    // 'wiredep', /* enable to let grunt autopopulate (base|index).html with bower components */
     'sass',
     'autoprefixer',
     'htmlmin'<% } %>
   ]);
 
-  grunt.registerTask('default', [<% if (includeWebapp) { %>
-    'wiredep',<% } %>
+  grunt.registerTask('default', [
+    // 'wiredep', /* enable to let grunt autopopulate (base|index).html with bower components */
     'sass',
     'autoprefixer',
     'watch'
