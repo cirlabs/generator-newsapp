@@ -13,7 +13,7 @@ module.exports = yeoman.generators.Base.extend({
     // Have Yeoman greet the user.
     this.log(require('yosay')());
     this.log(chalk.magenta(
-      'Welcome to the stunning ' + chalk.red('Newsapp') + ' generator!' +
+      "Welcome to the Newsapp generator. Let's make one. " +
       'Out of the box I include HTML5 Boilerplate, jQuery, and a ' +
       'Gruntfile.js to build your app.'
     ));
@@ -22,12 +22,12 @@ module.exports = yeoman.generators.Base.extend({
     var prompts = [{
       type: 'list',
       name: 'template',
-      message: 'Choose application template:',
+      message: 'Choose application template type:',
       choices: [{
-        name: 'Django',
+        name: 'Django Project Template',
         value: 'includeDjango'
       }, {
-        name: 'Webapp',
+        name: 'Front-end Web App Template',
         value: 'includeWebapp'
       }]
     },{
@@ -145,6 +145,15 @@ module.exports = yeoman.generators.Base.extend({
       if (this.includeDjango) {
         this.mkdir('templates');
         this.template('base.html', 'templates/base.html');
+      }
+    },
+    webapp: function () {
+      if (this.includeWebapp) {
+        this.mkdir('app');
+        this.mkdir('app/data');
+        this.copy('credentials.template');
+        this.template('index.html', 'app/index.html');
+
       }
     }
   },
