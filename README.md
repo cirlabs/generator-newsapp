@@ -1,63 +1,62 @@
-# generator-newsapp [![NPM version](https://badge.fury.io/js/generator-newsapp.png)](http://badge.fury.io/js/generator-newsapp) [![Build Status](https://secure.travis-ci.org/cirlabs/generator-newsapp.png?branch=master)](http://travis-ci.org/cirlabs/generator-newsapp) [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
+# generator-newsapp [![Build Status](https://secure.travis-ci.org/cirlabs/generator-newsapp.png?branch=master)](https://travis-ci.org/cirlabs/generator-newsapp)
 
-Part of CIRs three-part deploy:
+Scaffold news applications like a boss. generator-newsapp highlights include:
 
-![Three Amigos](http://collider.com/wp-content/uploads/three-amigos-blu-ray-slice.jpg)
+- Drop-in integration with our [Django Project Template](https://github.com/cirlabs/django-project-template) for blazing fast and awesome development (__recommended__)
+- Built-in server and Grunt tasks for standalone development without Django
+- Sass (optional)
+- Preconfiguration for Amazon S3 deployment
 
-[ops](https://github.com/BayCitizen/ops) | [django-project-template](https://github.com/cirlabs/django-project-template) | [**generator-newsapp**](https://github.com/cirlabs/generator-newsapp/)
+## Requirements
+- [Node.js 0.12.x](http://nodejs.org/) or [io.js 1.2.x](https://iojs.org/en/index.html)
+- [Yeoman](http://yeoman.io/). Install with `npm install -g yo`
 
-## Features
+## Templates
+__generator-newsapp__ includes two types of templates: `Django Project Template` and `Front-end Web App Template`.
 
-- Prompt to download popular JS libraries used in data-driven projects
-- [Livereload](http://livereload.com/) setup for reloading the web page on save
-- Sass enabled with [Libsass](https://github.com/hcatlin/libsass) (so you don't need Ruby or Compass installed to use it!)
-- Bower for dependency management
-- Grunt tasks to optimize project for deployment to Amazon S3 or Github Pages
+`Django Project Template` is meant to work in tandem with our actual [Django Project Template](https://github.com/cirlabs/django-project-template). Use this template when you want the convenience Grunt and Bower with the power of Django and Python web development.
 
-## Getting Started
+`Front-end Web App Template` is similar to the Yeoman team's [generator-webapp](https://github.com/yeoman/generator-webapp) and is meant to be a generator for a web application. Use this template if you're not relying on Django for data manipulation and what to do everything client side.
 
-- Install: `npm install -g generator-newsapp`
-- Run: `yo newsapp`
-- Run `grunt` for building, sass and js linting.
-
-## Template Types
-
-__generator_newsapp__ comes with two template types: __Django__ and __Flat Graphic__.
-
-### Django Template
-The Django template is meant to be used with CIR's [django-project-template](https://github.com/cirlabs/django-project-template). These two libraries work together and brings some more modern frontend tooling to Django/Python web app development. Deployment is handled by the Django project template. Refer to those docs for minification and production builds of your web application.
-
-### Flat Graphic Template
-If you don't need or use Django, the Flat Graphic template is the way to go. The Flat Graphic template contains the same dependencies and styles as the Django template, but also contains a built-in Node.js server for developing your project. There are also grunt tasks for minifying, concatenating, linting and building a production version of your application. Deployment is as easy as sending to Amazon S3 or Github Pages.
-
-See the [Yeoman deployment docs](http://yeoman.io/deployment.html) for deploying your finished app to Github Pages. 
-
-#### Third-Party Dependencies
-
-*(HTML/CSS/JS/Images/etc)*
-
-Third-party dependencies are managed with [bower-install](https://github.com/stephenplusplus/grunt-bower-install). Add new dependencies using **Bower** and then run the **Grunt** task to load them:
-
+## Setup
 ```bash
-  bower install --save jquery
+$ npm install -g generator-newsapp
+$ mkdir awesome-newsapp && cd $_
+$ yo newsapp # follow prompts
+$ mv credentials.template credentials.json
+$ grunt serve
 ```
+### Help
+Need help? Open an issue in: [ISSUES](https://github.com/cirlabs/generator-newsapp/issues)
 
-This works if the package author has followed the [Bower spec](https://github.com/bower/bower.json-spec). If the files are not automatically added to your index.html, check with the package's repo for support and/or file an issue with them to have it updated.
+### Contributing
+Want to improve the template? Fork the repo, add your changes and send a pull request.
 
-To manually add dependencies, `bower install depName --save` to get the files, then add a `script` or `style` tag to your `index.html` or an other appropriate place.
+### Thanks
+Thanks to the Yeoman team for an excellent project. Yeoman makes web developers' lives a lot easier.
 
+### License
+The BSD License (BSD)
 
-## Roadmap
-Here are some features we'd like to include in no particular order:
+Copyright (c) '93 Til ... The Center for Investigative Reporting
 
-- ~~Grunt or Jake task to send `dist` folder to Github Pages or Amazon S3~~ [Yeoman Deployment](http://yeoman.io/learning/deployment.html)
-- Built-in templates for charts and other data-driven graphics
-- Auto add `bower install` dependencies to `index.html` [grunt-wiredup implementation](https://github.com/stephenplusplus/grunt-wiredep)
-- ~~Test coverage and Travis CI integration for quality assurance~~
-- ~~Generic, non-CIR template for news apps~~
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
 
-## Contributing
-CIR loves open-source. Will this repo is currently tailored for our needs, we do hope to slowly turn this repo into a more generic and modular generator. Any and all ideas are welcome. Feel free to open an issue with any suggestions.
+* Redistributions of source code must retain the above copyright notice, this
+  list of conditions and the following disclaimer.
 
-## License
-MIT
+* Redistributions in binary form must reproduce the above copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.

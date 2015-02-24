@@ -1,0 +1,3 @@
+{
+    <% if (includeWebapp) { %>"directory": "app/bower_components"<% } %><% if (includeDjango) { %>"directory": "assets/bower_components"<% } %>
+}
