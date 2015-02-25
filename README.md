@@ -1,4 +1,4 @@
-# generator-newsapp [![Build Status](https://secure.travis-ci.org/cirlabs/generator-newsapp.png?branch=master)](https://travis-ci.org/cirlabs/generator-newsapp)
+# generator-newsapp [![Build Status](https://secure.travis-ci.org/cirlabs/generator-newsapp.png?branch=master)](https://travis-ci.org/cirlabs/generator-newsapp) [![npm version](https://badge.fury.io/js/generator-newsapp.svg)](http://badge.fury.io/js/generator-newsapp)
 
 Scaffold news applications like a boss. generator-newsapp highlights include:
 
