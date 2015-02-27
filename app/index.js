@@ -22,7 +22,8 @@ module.exports = yeoman.generators.Base.extend({
     var prompts = [{
       type: 'list',
       name: 'template',
-      message: 'Choose application template type:',
+      message: 'Which application template would you like? Read up more at \n' +
+        chalk.green('https://github.com/cirlabs/generator-newsapp#templates'),
       choices: [{
         name: 'Django Project Template',
         value: 'includeDjango'
@@ -144,6 +145,7 @@ module.exports = yeoman.generators.Base.extend({
     django: function () {
       if (this.includeDjango) {
         this.mkdir('templates');
+        this.mkdir('data');
         this.template('base.html', 'templates/base.html');
       }
     },

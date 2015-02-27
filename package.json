@@ -1,6 +1,6 @@
 {
   "name": "generator-newsapp",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Build news applications on deadline.",
   "license": "BSD",
   "main": "app/index.js",
